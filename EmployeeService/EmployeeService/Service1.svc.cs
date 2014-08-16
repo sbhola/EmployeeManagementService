@@ -16,7 +16,7 @@ namespace EmployeeService
         {
             if (Employees.Any(emp1 => emp1.EmpID == id))
             {
-                throw new FaultException("Employee id Already present. Please try again");
+                throw new FaultException("Employee id Already present. Please try again" ,new FaultCode("Employee ID Already present"));
             }
 
             Employee emp = new Employee();
@@ -63,7 +63,10 @@ namespace EmployeeService
 
         public List<Employee> GetAllEmployeeList()
         {
+            if(Employees.Count>0)
             return Employees;
+
+            return null;
         }
 
         public Employee GetEmployeeDetailsByName(string name)
