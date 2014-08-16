@@ -14,6 +14,11 @@ namespace EmployeeService
 
         public Employee CreateEmployee(int id, string name, string remarks)
         {
+            if (Employees.Any(emp1 => emp1.EmpID == id))
+            {
+                throw new FaultException("Employee id Already present. Please try again");
+            }
+          
             Employee emp = new Employee();
             emp.EmpID = id;
             emp.EmpName = name;
@@ -33,8 +38,12 @@ namespace EmployeeService
         {
             if (Employees.Any(emp => emp.EmpID == id))
             {
-                Employee selectedEmployee = Employees.Where(emp => emp.EmpID == id).First();
-                selectedEmployee.Remark.text = remarks;
+                //Employee selectedEmployee = Employees.Where(emp => emp.EmpID == id).First();
+                //selectedEmployee.Remark.text = remarks;
+                //Console.WriteLine("Remark changes");
+
+                int index = Employees.IndexOf(Employees.Where(emp => emp.EmpID == id).First());
+                Employees[index].Remark.text = remarks;                
                 Console.WriteLine("Remark changes");
                 return true;
             }
@@ -56,6 +65,12 @@ namespace EmployeeService
         {
             return Employees;
         }
-                
+
+        //public void DeleteList()
+        //{
+        //    Employees.Clear();
+        //}
+
+
     }
 }
