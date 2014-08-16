@@ -13,18 +13,22 @@ namespace EmployeeService
     public interface ICreateOrModifyEmployee
     {
         [OperationContract]
-        void CreateEmployee(int id, string name,string remarks);
+        Employee CreateEmployee(int id, string name, string remarks);
 
         [OperationContract]
         bool AddRemarks(int id, string remarks);
     }
 
-    //[ServiceContract]
-    //public interface IRetrieveEmpDetails
-    //{
+    [ServiceContract]
+    public interface IRetrieveEmpDetails
+    {
+        [OperationContract]
+        Employee GetEmployeeDetailsByID(int id);
 
-    //}
-    
+        [OperationContract]
+        List<Employee> GetAllEmployeeList();
+    }
+
     [DataContract]
     public class Employee
     {

@@ -8,11 +8,11 @@ using System.Text;
 
 namespace EmployeeService
 {
-    public class EmployeeManagementService : ICreateOrModifyEmployee
+    public class EmployeeManagementService : ICreateOrModifyEmployee, IRetrieveEmpDetails
     {
-        List<Employee> Employees = new List<Employee>();
+        static List<Employee> Employees = new List<Employee>();
 
-        public void CreateEmployee(int id, string name, string remarks)
+        public Employee CreateEmployee(int id, string name, string remarks)
         {
             Employee emp = new Employee();
             emp.EmpID = id;
@@ -26,11 +26,36 @@ namespace EmployeeService
 
             Employees.Add(emp);
 
+            return emp;
         }
 
         public bool AddRemarks(int id, string remarks)
         {
+            if (Employees.Any(emp => emp.EmpID == id))
+            {
+                Employee selectedEmployee = Employees.Where(emp => emp.EmpID == id).First();
+                selectedEmployee.Remark.text = remarks;
+                Console.WriteLine("Remark changes");
+                return true;
+            }
             return false;
         }
+
+
+        public Employee GetEmployeeDetailsByID(int id)
+        {
+            if (Employees.Any(emp => emp.EmpID == id))
+            {
+                Employee selectedEmployee = Employees.Where(emp => emp.EmpID == id).First();
+                return selectedEmployee;
+            }
+            return null;
+        }
+
+        public List<Employee> GetAllEmployeeList()
+        {
+            return Employees;
+        }
+                
     }
 }
