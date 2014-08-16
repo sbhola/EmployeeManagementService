@@ -27,6 +27,9 @@ namespace EmployeeService
 
         [OperationContract]
         List<Employee> GetAllEmployeeList();
+
+        [OperationContract]
+        Employee GetEmployeeDetailsByName(string name);
     }
 
     [DataContract]
