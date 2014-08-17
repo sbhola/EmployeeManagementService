@@ -176,16 +176,20 @@ namespace EmployeeFixtures
         {
             using (var client = new RetrieveEmpDetailsClient())
             {
-                var emp = client.GetEmployeeDetailsByName("Rajnikant");
-                if (emp != null)
+                try
                 {
+                    var emp = client.GetEmployeeDetailsByName("Rajnikant");
                     Assert.AreEqual(emp.EmpID, 4);
                     Assert.AreEqual(emp.EmpName, "Rajnikant");
                     Assert.AreEqual(emp.Remark.text, "yenna rascala");
                 }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+                
             }
 
         }
-
     }
 }
