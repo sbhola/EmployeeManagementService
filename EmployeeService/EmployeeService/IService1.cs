@@ -16,7 +16,7 @@ namespace EmployeeService
         Employee CreateEmployee(int id, string name, string remarks);
 
         [OperationContract]
-        bool AddRemarks(int id, string remarks);
+        void AddRemarks(int id, string remarks);
     }
 
     [ServiceContract]

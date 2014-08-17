@@ -162,10 +162,10 @@ namespace EmployeeFixtures.EmployeeServiceReference {
         System.Threading.Tasks.Task<EmployeeFixtures.EmployeeServiceReference.Employee> CreateEmployeeAsync(int id, string name, string remarks);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICreateOrModifyEmployee/AddRemarks", ReplyAction="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksResponse")]
-        bool AddRemarks(int id, string remarks);
+        void AddRemarks(int id, string remarks);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICreateOrModifyEmployee/AddRemarks", ReplyAction="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksResponse")]
-        System.Threading.Tasks.Task<bool> AddRemarksAsync(int id, string remarks);
+        System.Threading.Tasks.Task AddRemarksAsync(int id, string remarks);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -203,11 +203,11 @@ namespace EmployeeFixtures.EmployeeServiceReference {
             return base.Channel.CreateEmployeeAsync(id, name, remarks);
         }
         
-        public bool AddRemarks(int id, string remarks) {
-            return base.Channel.AddRemarks(id, remarks);
+        public void AddRemarks(int id, string remarks) {
+            base.Channel.AddRemarks(id, remarks);
         }
         
-        public System.Threading.Tasks.Task<bool> AddRemarksAsync(int id, string remarks) {
+        public System.Threading.Tasks.Task AddRemarksAsync(int id, string remarks) {
             return base.Channel.AddRemarksAsync(id, remarks);
         }
     }

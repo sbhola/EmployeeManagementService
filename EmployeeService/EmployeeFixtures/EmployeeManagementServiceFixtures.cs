@@ -52,10 +52,22 @@ namespace EmployeeFixtures
         [TestMethod]
         public void TestAddRemarkForExistingEmployee()
         {
-            using (var client = new CreateOrModifyEmployeeClient())
+            try
             {
-                bool result = client.AddRemarks(1, "sad boy");
-                Assert.AreEqual(result, true);
+                using (var client = new CreateOrModifyEmployeeClient())
+                {
+                    client.AddRemarks(1, "sad boy");
+
+                    using (var retrieveClient = new RetrieveEmpDetailsClient())
+                    {
+                        var empModified = retrieveClient.GetEmployeeDetailsByID(1);
+                        Assert.AreEqual(empModified.Remark.text, "sad boy");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
             }
         }
 
@@ -63,13 +75,25 @@ namespace EmployeeFixtures
         /// Test for : Adding remarks for an Employee which is not present in the list
         /// It should return false
         /// </summary>
-        [TestMethod]
+        [TestMethod]        
         public void TestAddRemarkWhenEmployeeNotPresent()
         {
-            using (var client = new CreateOrModifyEmployeeClient())
+            try
             {
-                bool result = client.AddRemarks(6, "watta boy");
-                Assert.AreEqual(result, false);
+
+                using (var client = new CreateOrModifyEmployeeClient())
+                {
+                    client.AddRemarks(6, "watta boy");
+                    using (var retrieveClient = new RetrieveEmpDetailsClient())
+                    {
+                        var empTried = retrieveClient.GetEmployeeDetailsByID(6);
+                        Assert.AreNotEqual(empTried.Remark.text, "watta boy");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
             }
         }
 
