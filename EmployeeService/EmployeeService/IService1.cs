@@ -4,31 +4,39 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
+using System.ServiceModel.Channels;
 using System.Text;
+
 
 namespace EmployeeService
 {
 
-    [ServiceContract]
+    [ServiceContract]    
+   
     public interface ICreateOrModifyEmployee
     {
         [OperationContract]
+        [FaultContract(typeof(FaultException))]        
         Employee CreateEmployee(int id, string name, string remarks);
 
         [OperationContract]
+        [FaultContract(typeof(FaultException))]
         void AddRemarks(int id, string remarks);
     }
 
-    [ServiceContract]
+    [ServiceContract]   
     public interface IRetrieveEmpDetails
     {
         [OperationContract]
+        [FaultContract(typeof(FaultException))]
         Employee GetEmployeeDetailsByID(int id);
 
         [OperationContract]
+        [FaultContract(typeof(FaultException))]
         List<Employee> GetAllEmployeeList();
 
         [OperationContract]
+        [FaultContract(typeof(FaultException))]
         Employee GetEmployeeDetailsByName(string name);
     }
 

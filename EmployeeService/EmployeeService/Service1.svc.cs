@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
+using System.ServiceModel.Channels;
 using System.Text;
 
 namespace EmployeeService
@@ -30,7 +31,8 @@ namespace EmployeeService
             ///Check if the employee id is already present in the list,is yes then throw.
             if (_employees.Any(emp1 => emp1.EmpID == id))
             {
-                throw new FaultException("Employee id Already present. Please try again" ,new FaultCode("Employee ID Already present"));
+                //throw new FaultException("Employee id Already present. Please try again" ,new FaultCode("Employee ID Already present"));
+                throw FaultException.CreateFault(MessageFault.CreateFault(new FaultCode("101"), "Employee ID Already present"));
             }
 
             ///Else create a new employee and add it in the list
@@ -69,7 +71,8 @@ namespace EmployeeService
                 _employees[index].Remark.text = remarks;
                 Debug.WriteLine("Remark changed");                
             }
-            throw new FaultException("Employee id for which you want to add remarks is not present in database.Please try again.",new FaultCode("Employee ID does not exist"));
+            //throw new FaultException("Employee id for which you want to add remarks is not present in database.Please try again.",new FaultCode("Employee ID does not exist"));
+            throw FaultException.CreateFault(MessageFault.CreateFault(new FaultCode("102"), "Employee ID does not exist"));
         }
 
         /// <summary>
@@ -85,7 +88,9 @@ namespace EmployeeService
                 Employee selectedEmployee = _employees.Where(emp => emp.EmpID == id).First();
                 return selectedEmployee;
             }
-            throw new FaultException("Employee ID requested is not present.Please try again.", new FaultCode("Employee id requested is not present"));
+            //throw new FaultException("Employee ID requested is not present.Please try again.", new FaultCode("Employee id requested is not present"));
+            
+            throw FaultException.CreateFault(MessageFault.CreateFault(new FaultCode("103"), "Employee id requested is not present"));
         }
 
         /// <summary>
@@ -98,7 +103,8 @@ namespace EmployeeService
             if(_employees.Count>0)
             return _employees;
 
-            throw new FaultException("Employees List is empty. Please add some employees in the database and then try again", new FaultCode("Employees List is empty"));
+            //throw new FaultException("Employees List is empty. Please add some employees in the database and then try again", new FaultCode("Employees List is empty"));
+            throw FaultException.CreateFault(MessageFault.CreateFault(new FaultCode("104"), "Employees List is empty"));
         }
 
         /// <summary>
@@ -114,9 +120,9 @@ namespace EmployeeService
                 Employee selectedEmployee = _employees.Where(emp => emp.EmpName == name).First();
                 return selectedEmployee;
             }
-            throw new FaultException("Employee Name does not exists in the database.Please try again", new FaultCode("Employee Name does not exist"));
+            //throw new FaultException("Employee Name does not exists in the database.Please try again", new FaultCode("Employee Name does not exist"));
+            throw FaultException.CreateFault(MessageFault.CreateFault(new FaultCode("105"), "Employee Name does not exist"));
         }
-
 
     }
 }

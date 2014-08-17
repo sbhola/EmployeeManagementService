@@ -15,6 +15,7 @@ namespace EMSClient
             EmployeeClient emp = new EmployeeClient();
             while (choice != 9)
             {
+                Console.WriteLine("Press any key to continue..");
                 Console.ReadKey();
                 Console.Clear();
                 Console.WriteLine("Welcome to Employee Management Service!");
@@ -53,6 +54,7 @@ namespace EMSClient
                         emp.GetEmployeeDetailsByName(detailsForName);
                         break;
                     case 5:
+                        emp.GetAllEmployeeList();
                         break;
                     case 6:
                         break;

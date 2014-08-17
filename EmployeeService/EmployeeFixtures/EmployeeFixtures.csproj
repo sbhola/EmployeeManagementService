@@ -79,6 +79,12 @@
     <None Include="Service References\EmployeeServiceReference\Service12.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\EmployeeServiceReference\Service13.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EmployeeServiceReference\Service131.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\EmployeeServiceReference\" />

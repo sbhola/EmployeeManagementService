@@ -156,12 +156,14 @@ namespace EmployeeFixtures.EmployeeServiceReference {
     public interface ICreateOrModifyEmployee {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICreateOrModifyEmployee/CreateEmployee", ReplyAction="http://tempuri.org/ICreateOrModifyEmployee/CreateEmployeeResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/ICreateOrModifyEmployee/CreateEmployeeFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
         EmployeeFixtures.EmployeeServiceReference.Employee CreateEmployee(int id, string name, string remarks);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICreateOrModifyEmployee/CreateEmployee", ReplyAction="http://tempuri.org/ICreateOrModifyEmployee/CreateEmployeeResponse")]
         System.Threading.Tasks.Task<EmployeeFixtures.EmployeeServiceReference.Employee> CreateEmployeeAsync(int id, string name, string remarks);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICreateOrModifyEmployee/AddRemarks", ReplyAction="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
         void AddRemarks(int id, string remarks);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICreateOrModifyEmployee/AddRemarks", ReplyAction="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksResponse")]
@@ -217,18 +219,22 @@ namespace EmployeeFixtures.EmployeeServiceReference {
     public interface IRetrieveEmpDetails {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByID", ReplyAction="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByIDResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByIDFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
         EmployeeFixtures.EmployeeServiceReference.Employee GetEmployeeDetailsByID(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByID", ReplyAction="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByIDResponse")]
         System.Threading.Tasks.Task<EmployeeFixtures.EmployeeServiceReference.Employee> GetEmployeeDetailsByIDAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeList", ReplyAction="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeListResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeListFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
         EmployeeFixtures.EmployeeServiceReference.Employee[] GetAllEmployeeList();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeList", ReplyAction="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeListResponse")]
         System.Threading.Tasks.Task<EmployeeFixtures.EmployeeServiceReference.Employee[]> GetAllEmployeeListAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByName", ReplyAction="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByNameResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByNameFaultExceptionFaul" +
+            "t", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
         EmployeeFixtures.EmployeeServiceReference.Employee GetEmployeeDetailsByName(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByName", ReplyAction="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByNameResponse")]

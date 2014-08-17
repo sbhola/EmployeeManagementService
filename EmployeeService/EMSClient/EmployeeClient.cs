@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EMSClient.EMSReference;
+using System.ServiceModel;
+using System.ServiceModel.Channels;
 
 namespace EMSClient
 {
@@ -23,10 +25,11 @@ namespace EMSClient
                 {
                     createOrModifyClient.CreateEmployee(empID, empName, empRemarks);
                 }
-            }
-            catch (Exception ex)
+            }                
+            catch (FaultException ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Code);
             }
         }
 
@@ -39,9 +42,10 @@ namespace EMSClient
                     client.AddRemarks(id,remarks);                    
                 }
             }
-            catch (Exception ex)
+            catch (FaultException ex)
             {
-                Console.WriteLine(ex.Message);                
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Code);
             }
 
         }
@@ -59,9 +63,10 @@ namespace EMSClient
                     Console.WriteLine(emp.Remark.remarkTimestamp);
                 }
             }
-            catch (Exception ex)
+            catch (FaultException ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Code);
             }
         }
 
@@ -78,9 +83,10 @@ namespace EMSClient
                     Console.WriteLine(emp.Remark.remarkTimestamp);
                 }
             }
-            catch (Exception ex)
+            catch (FaultException ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Code);
             }
         }
 
@@ -93,18 +99,19 @@ namespace EMSClient
                     var empList = client.GetAllEmployeeList();
                     foreach(var emp in empList)
                     {
-                        Console.WriteLine(emp.EmpID);
-                        Console.WriteLine(emp.EmpName);
-                        Console.WriteLine(emp.Remark.text);
-                        Console.WriteLine(emp.Remark.remarkTimestamp);
+                        Console.WriteLine("Employee ID : " + emp.EmpID);
+                        Console.WriteLine("Employee Name : " + emp.EmpName);
+                        Console.WriteLine("Employee Remarks : " + emp.Remark.text);
+                        Console.WriteLine("Employee Remark TimeStamp : " + emp.Remark.remarkTimestamp);
                     }
                 }
 
-            }
-            catch (Exception ex)
+            }   
+            catch (FaultException ex)
             {
                 Console.WriteLine(ex.Message);
-            }
+                Console.WriteLine(ex.Code);
+            }                 
         }
 
     }
