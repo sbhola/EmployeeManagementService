@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeService", "EmployeeService\EmployeeService.csproj", "{4018AA7B-8F1B-44F8-A915-FB8067D49A07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeFixtures", "EmployeeFixtures\EmployeeFixtures.csproj", "{B92F72AD-6354-4716-8CBC-6265BF0C47CC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4018AA7B-8F1B-44F8-A915-FB8067D49A07} = {4018AA7B-8F1B-44F8-A915-FB8067D49A07}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4018AA7B-8F1B-44F8-A915-FB8067D49A07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4018AA7B-8F1B-44F8-A915-FB8067D49A07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4018AA7B-8F1B-44F8-A915-FB8067D49A07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4018AA7B-8F1B-44F8-A915-FB8067D49A07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B92F72AD-6354-4716-8CBC-6265BF0C47CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B92F72AD-6354-4716-8CBC-6265BF0C47CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B92F72AD-6354-4716-8CBC-6265BF0C47CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B92F72AD-6354-4716-8CBC-6265BF0C47CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
