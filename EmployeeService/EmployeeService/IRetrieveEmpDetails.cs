@@ -11,7 +11,7 @@ namespace EmployeeService
         Employee GetEmployeeDetailsById(int id);
 
         [OperationContract]
-        [FaultContract(typeof(FaultException))]
+        [FaultContract(typeof(EmployeeDoesNotExists))]
         List<Employee> GetAllEmployeeList();
 
         [OperationContract]

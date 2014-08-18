@@ -379,7 +379,8 @@ namespace EmployeeFixtures.EmployeeServiceReference {
         System.Threading.Tasks.Task<EmployeeFixtures.EmployeeServiceReference.Employee> GetEmployeeDetailsByIdAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeList", ReplyAction="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeListResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeListFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmployeeFixtures.EmployeeServiceReference.EmployeeDoesNotExists), Action="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeListEmployeeDoesNotExistsFau" +
+            "lt", Name="EmployeeDoesNotExists", Namespace="http://schemas.datacontract.org/2004/07/EmployeeService")]
         EmployeeFixtures.EmployeeServiceReference.Employee[] GetAllEmployeeList();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeList", ReplyAction="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeListResponse")]

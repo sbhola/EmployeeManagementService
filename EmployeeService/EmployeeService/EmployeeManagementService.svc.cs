@@ -136,9 +136,12 @@ namespace EmployeeService
             if (_employees.Count > 0)
                 return _employees;
 
-
-            //throw new FaultException("Employees List is empty. Please add some employees in the database and then try again", new FaultCode("Employees List is empty"));
-            throw FaultException.CreateFault(MessageFault.CreateFault(new FaultCode("104"), "Employees List is empty"));
+            EmployeeDoesNotExists fault = new EmployeeDoesNotExists
+            {
+                FaultId = 105,
+                Message = "Employee List is Empty.Please add new employees and then try again."
+            };
+            throw new FaultException<EmployeeDoesNotExists>(fault, "Employee List in Empty");
         }
 
         /// <summary>

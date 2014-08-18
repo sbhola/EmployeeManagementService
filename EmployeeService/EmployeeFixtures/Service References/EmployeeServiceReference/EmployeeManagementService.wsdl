@@ -496,7 +496,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IRetrieveEmpDetails_GetAllEmployeeList_FaultExceptionFault_Fault">
+  <wsp:Policy wsu:Id="WSHttpBinding_IRetrieveEmpDetails_GetAllEmployeeList_EmployeeDoesNotExistsFault_Fault">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -629,8 +629,8 @@
   <wsdl:message name="IRetrieveEmpDetails_GetAllEmployeeList_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllEmployeeListResponse" />
   </wsdl:message>
-  <wsdl:message name="IRetrieveEmpDetails_GetAllEmployeeList_FaultExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q5:FaultException" />
+  <wsdl:message name="IRetrieveEmpDetails_GetAllEmployeeList_EmployeeDoesNotExistsFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/EmployeeService" name="detail" element="q5:EmployeeDoesNotExists" />
   </wsdl:message>
   <wsdl:message name="IRetrieveEmpDetails_GetEmployeeDetailsByName_InputMessage">
     <wsdl:part name="parameters" element="tns:GetEmployeeDetailsByName" />
@@ -671,7 +671,7 @@
     <wsdl:operation name="GetAllEmployeeList">
       <wsdl:input wsaw:Action="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeList" message="tns:IRetrieveEmpDetails_GetAllEmployeeList_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeListResponse" message="tns:IRetrieveEmpDetails_GetAllEmployeeList_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeListFaultExceptionFault" name="FaultExceptionFault" message="tns:IRetrieveEmpDetails_GetAllEmployeeList_FaultExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeListEmployeeDoesNotExistsFault" name="EmployeeDoesNotExistsFault" message="tns:IRetrieveEmpDetails_GetAllEmployeeList_EmployeeDoesNotExistsFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetEmployeeDetailsByName">
       <wsdl:input wsaw:Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByName" message="tns:IRetrieveEmpDetails_GetEmployeeDetailsByName_InputMessage" />
@@ -767,9 +767,9 @@
         <wsp:PolicyReference URI="#WSHttpBinding_IRetrieveEmpDetails_GetAllEmployeeList_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
-      <wsdl:fault name="FaultExceptionFault">
-        <wsp:PolicyReference URI="#WSHttpBinding_IRetrieveEmpDetails_GetAllEmployeeList_FaultExceptionFault_Fault" />
-        <soap12:fault use="literal" name="FaultExceptionFault" namespace="" />
+      <wsdl:fault name="EmployeeDoesNotExistsFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRetrieveEmpDetails_GetAllEmployeeList_EmployeeDoesNotExistsFault_Fault" />
+        <soap12:fault use="literal" name="EmployeeDoesNotExistsFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetEmployeeDetailsByName">

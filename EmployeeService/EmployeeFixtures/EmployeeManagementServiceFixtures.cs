@@ -162,6 +162,16 @@ namespace EmployeeFixtures
         }
 
         [TestMethod]
+        [ExpectedException(typeof(FaultException<EmployeeDoesNotExists>))]
+        public void TestRetrieveEmptyEmployeeListShouldThrow()
+        {
+            using (var client = new RetrieveEmpDetailsClient())
+            {
+                var empList = client.GetAllEmployeeList();
+            }
+        }
+
+        [TestMethod]
         public void TestGetCorrectEmployeeDetailsByName()
         {
             using (var createClient = new CreateOrModifyEmployeeClient())
