@@ -16,5 +16,8 @@ namespace EmployeeService
         [OperationContract]
         [FaultContract(typeof(FaultException))]
         void DeleteEmployeeById(int id);
+
+        [OperationContract]
+        void DisposeEmployeeList();
     }
 }

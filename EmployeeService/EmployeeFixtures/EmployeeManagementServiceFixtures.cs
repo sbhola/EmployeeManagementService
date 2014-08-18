@@ -36,6 +36,7 @@ namespace EmployeeFixtures
                 Assert.AreEqual(newEmployee.EmpId, 1);
                 Assert.AreEqual(newEmployee.EmpName, "sid");
                 Assert.AreEqual(newEmployee.Remark.Text, "good boy");
+                client.DisposeEmployeeList();
             }
         }
 
@@ -48,6 +49,7 @@ namespace EmployeeFixtures
         {
             using (var client = new CreateOrModifyEmployeeClient())
             {
+                Employee newEmployee = client.CreateEmployee(1, "sid", "good boy");
                 client.AddRemarks(1, "sad boy");
 
                 using (var retrieveClient = new RetrieveEmpDetailsClient())
@@ -55,6 +57,8 @@ namespace EmployeeFixtures
                     var empModified = retrieveClient.GetEmployeeDetailsById(1);
                     Assert.AreEqual(empModified.Remark.Text, "sad boy");
                 }
+                
+                client.DisposeEmployeeList();
             }
         }
 
@@ -68,12 +72,14 @@ namespace EmployeeFixtures
         {
             using (var client = new CreateOrModifyEmployeeClient())
             {
+                client.CreateEmployee(1, "sid", "yoyo");
                 client.AddRemarks(6, "watta boy");
                 using (var retrieveClient = new RetrieveEmpDetailsClient())
                 {
                     var empTried = retrieveClient.GetEmployeeDetailsById(6);
                     Assert.AreNotEqual(empTried.Remark.Text, "watta boy");
                 }
+                client.DisposeEmployeeList();
             }
         }
 
@@ -96,8 +102,8 @@ namespace EmployeeFixtures
 
                     Assert.AreEqual(emp1.Remark.Text, emp2.Remark.Text);
                     Debug.WriteLine(emp1.Remark.Text);
-                    Debug.WriteLine(emp2.Remark.Text);
                 }
+                createClient.DisposeEmployeeList();
             }
         }
 
@@ -113,6 +119,7 @@ namespace EmployeeFixtures
                 Assert.AreEqual(emp.EmpId, 4);
                 Assert.AreEqual(emp.EmpName, "Rajnikant");
                 Assert.AreEqual(emp.Remark.Text, "yenna rascala");
+                client.DisposeEmployeeList();
             }
         }
 
@@ -126,7 +133,9 @@ namespace EmployeeFixtures
         {
             using (var client = new CreateOrModifyEmployeeClient())
             {
-                var emp = client.CreateEmployee(4, "Rajnikant", "yenna rascala");
+                var createEmployee = client.CreateEmployee(4, "Rajnikant", "yenna rascala");
+                var createExistingEmployee = client.CreateEmployee(4, "Rajnikant", "yenna rascala");
+                client.DisposeEmployeeList();
             }
         }
 
@@ -136,22 +145,36 @@ namespace EmployeeFixtures
         [TestMethod]
         public void TestRetrieveEmployeeList()
         {
-            using (var client = new RetrieveEmpDetailsClient())
+            using (var createClient = new CreateOrModifyEmployeeClient())
             {
-                var employees = client.GetAllEmployeeList();
-                Assert.AreEqual(employees.Length, 3);
+                var emp1 = createClient.CreateEmployee(1, "sid", "watta boy");
+                var emp2 = createClient.CreateEmployee(2, "vinayak", "awesome ");
+                var emp3 = createClient.CreateEmployee(3, "saif", "smelly cat");
+
+                using (var client = new RetrieveEmpDetailsClient())
+                {
+                    var employees = client.GetAllEmployeeList();
+                    Assert.AreEqual(employees.Length, 3);
+                }
+                createClient.DisposeEmployeeList();
             }
         }
 
         [TestMethod]
         public void TestGetCorrectEmployeeDetailsByName()
         {
-            using (var client = new RetrieveEmpDetailsClient())
+            using (var createClient = new CreateOrModifyEmployeeClient())
             {
-                var emp = client.GetEmployeeDetailsByName("Rajnikant");
-                Assert.AreEqual(emp.EmpId, 4);
-                Assert.AreEqual(emp.EmpName, "Rajnikant");
-                Assert.AreEqual(emp.Remark.Text, "yenna rascala");
+                var createEmployee = createClient.CreateEmployee(4, "Rajnikant", "yenna rascala");
+
+                using (var client = new RetrieveEmpDetailsClient())
+                {
+                    var emp = client.GetEmployeeDetailsByName("Rajnikant");
+                    Assert.AreEqual(emp.EmpId, 4);
+                    Assert.AreEqual(emp.EmpName, "Rajnikant");
+                    Assert.AreEqual(emp.Remark.Text, "yenna rascala");
+                }
+                createClient.DisposeEmployeeList();
             }
         }
 
@@ -163,27 +186,44 @@ namespace EmployeeFixtures
         [ExpectedException(typeof(FaultException))]
         public void TestGetIncorrectEmployeeDetailsByName()
         {
-            using (var client = new RetrieveEmpDetailsClient())
+            using (var createClient = new CreateOrModifyEmployeeClient())
             {
-                string name = "maharaja";
-                var employee = client.GetEmployeeDetailsByName(name);
+                createClient.DisposeEmployeeList();
+                createClient.CreateEmployee(1, "baby", "baby doll me sone di ye duniya pittal di");
+
+                using (var client = new RetrieveEmpDetailsClient())
+                {
+                    string name = "maharaja";
+                    var employee = client.GetEmployeeDetailsByName(name);
+                }
+                createClient.DisposeEmployeeList();
             }
+
         }
 
         [TestMethod]
         public void TestDeleteExistingEmployee()
         {
-            using (var retrieveClient = new RetrieveEmpDetailsClient())
+            using (var createClient = new CreateOrModifyEmployeeClient())
             {
-                var empList = retrieveClient.GetAllEmployeeList();
-                Assert.AreEqual(empList.Length, 3);
+                createClient.CreateEmployee(1, "sid", "watta boy");
+                createClient.CreateEmployee(2, "vinayak", "awesome boy");
+                createClient.CreateEmployee(3, "saif", "smelly boy");
 
-                using (var client = new CreateOrModifyEmployeeClient())
+                using (var retrieveClient = new RetrieveEmpDetailsClient())
                 {
-                    client.DeleteEmployeeById(1);
+                    var empList = retrieveClient.GetAllEmployeeList();
+                    Assert.AreEqual(empList.Length,3);
                 }
-                empList = retrieveClient.GetAllEmployeeList();
-                Assert.AreEqual(empList.Length, 2);
+
+                createClient.DeleteEmployeeById(1);
+
+                using (var retrieveClient = new RetrieveEmpDetailsClient())
+                {
+                    var empList = retrieveClient.GetAllEmployeeList();
+                    Assert.AreEqual(empList.Length, 2);
+                }
+                createClient.DisposeEmployeeList();
             }
         }
 
@@ -193,9 +233,14 @@ namespace EmployeeFixtures
         {
             using (var client = new CreateOrModifyEmployeeClient())
             {
-                client.DeleteEmployeeById(1);
+                client.CreateEmployee(1, "sid", "watta boy");
+                client.CreateEmployee(2, "vinayak", "shitty boy");
+                client.CreateEmployee(3, "saif", "smelly boy");
+
+                client.DeleteEmployeeById(11);
+
+                client.DisposeEmployeeList();
             }
         }
-
     }
 }

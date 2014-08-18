@@ -63,6 +63,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomExceptions.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="ICreateOrModifyEmployee.cs" />
     <Compile Include="EmployeeManagementService.svc.cs">

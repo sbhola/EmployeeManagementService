@@ -175,6 +175,12 @@ namespace EmployeeFixtures.EmployeeServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICreateOrModifyEmployee/DeleteEmployeeById", ReplyAction="http://tempuri.org/ICreateOrModifyEmployee/DeleteEmployeeByIdResponse")]
         System.Threading.Tasks.Task DeleteEmployeeByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICreateOrModifyEmployee/DisposeEmployeeList", ReplyAction="http://tempuri.org/ICreateOrModifyEmployee/DisposeEmployeeListResponse")]
+        void DisposeEmployeeList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICreateOrModifyEmployee/DisposeEmployeeList", ReplyAction="http://tempuri.org/ICreateOrModifyEmployee/DisposeEmployeeListResponse")]
+        System.Threading.Tasks.Task DisposeEmployeeListAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -226,6 +232,14 @@ namespace EmployeeFixtures.EmployeeServiceReference {
         
         public System.Threading.Tasks.Task DeleteEmployeeByIdAsync(int id) {
             return base.Channel.DeleteEmployeeByIdAsync(id);
+        }
+        
+        public void DisposeEmployeeList() {
+            base.Channel.DisposeEmployeeList();
+        }
+        
+        public System.Threading.Tasks.Task DisposeEmployeeListAsync() {
+            return base.Channel.DisposeEmployeeListAsync();
         }
     }
     

@@ -25,13 +25,24 @@ namespace EmployeeService
         /// <returns>Employee</returns>
         public Employee CreateEmployee(int id, string name, string remarks)
         {
-            //Check if the employee id is already present in the list,is yes then throw.
-            if (_employees.Any(emp1 => emp1.EmpId == id))
-            {
-                //throw new FaultException("Employee id Already present. Please try again" ,new FaultCode("Employee ID Already present"));
-                throw FaultException.CreateFault(MessageFault.CreateFault(new FaultCode("101"), "Employee ID Already present"));
-            }
+                //Check if the employee id is already present in the list,is yes then throw.
+                if (_employees.Any(emp1 => emp1.EmpId == id))
+                {
+                    //throw new FaultException("Employee id Already present. Please try again" ,new FaultCode("Employee ID Already present"));
 
+                   DisposeEmployeeList();
+
+                    throw FaultException.CreateFault(MessageFault.CreateFault(new FaultCode("101"),
+                        "Employee ID Already present"));
+
+                    //EmployeeAlreadyExistsFault fault = new EmployeeAlreadyExistsFault
+                    //{
+                    //    FaultId = 101,
+                    //    Message = "Employee id Already present. Please try again"
+                    //};
+
+                }
+            
             //Else create a new employee and add it in the list
             Employee emp = new Employee();
             emp.EmpId = id;
@@ -66,8 +77,9 @@ namespace EmployeeService
 
                 int index = _employees.IndexOf(_employees.First(emp => emp.EmpId == id));
                 _employees[index].Remark.Text = remarks;
-                Debug.WriteLine("Remark changed");                
+                Debug.WriteLine("Remark changed");
             }
+            DisposeEmployeeList();
             //throw new FaultException("Employee id for which you want to add remarks is not present in database.Please try again.",new FaultCode("Employee ID does not exist"));
             throw FaultException.CreateFault(MessageFault.CreateFault(new FaultCode("102"), "Employee ID does not exist"));
         }
@@ -83,6 +95,7 @@ namespace EmployeeService
             }
             else
             {
+                DisposeEmployeeList();
                 throw new FaultException("Employee does not exists .Please try again");
             }
         }
@@ -101,7 +114,7 @@ namespace EmployeeService
                 return selectedEmployee;
             }
             //throw new FaultException("Employee ID requested is not present.Please try again.", new FaultCode("Employee id requested is not present"));
-            
+            DisposeEmployeeList();
             throw FaultException.CreateFault(MessageFault.CreateFault(new FaultCode("103"), "Employee id requested is not present"));
         }
 
@@ -112,8 +125,9 @@ namespace EmployeeService
         /// <returns>_employees</returns>
         public List<Employee> GetAllEmployeeList()
         {
-            if(_employees.Count>0)
-            return _employees;
+            if (_employees.Count > 0)
+                return _employees;
+
 
             //throw new FaultException("Employees List is empty. Please add some employees in the database and then try again", new FaultCode("Employees List is empty"));
             throw FaultException.CreateFault(MessageFault.CreateFault(new FaultCode("104"), "Employees List is empty"));
@@ -132,8 +146,15 @@ namespace EmployeeService
                 Employee selectedEmployee = _employees.Where(emp => emp.EmpName == name).First();
                 return selectedEmployee;
             }
+            DisposeEmployeeList();
             //throw new FaultException("Employee Name does not exists in the database.Please try again", new FaultCode("Employee Name does not exist"));
             throw FaultException.CreateFault(MessageFault.CreateFault(new FaultCode("105"), "Employee Name does not exist"));
+        }
+
+        public void DisposeEmployeeList()
+        {
+            //_employees.Clear();
+            _employees = new List<Employee>();
         }
 
     }
