@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="EOu744T4/owVwGNpd7oEpWjFzYs=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="zw4Bod1g6NUDOgQnBEPy61rP5yI=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="wsHttpBinding" name="WSHttpBinding_ICreateOrModifyEmployee">
       <properties>
@@ -251,10 +251,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="WSHttpBinding_ICreateOrModifyEmployee" contract="EmployeeServiceReference.ICreateOrModifyEmployee" bindingType="wsHttpBinding" address="http://localhost:62293/Service1.svc" bindingConfiguration="WSHttpBinding_ICreateOrModifyEmployee">
+    <endpoint name="WSHttpBinding_ICreateOrModifyEmployee" contract="EmployeeServiceReference.ICreateOrModifyEmployee" bindingType="wsHttpBinding" address="http://localhost:62293/EmployeeManagementService.svc" bindingConfiguration="WSHttpBinding_ICreateOrModifyEmployee">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:62293/Service1.svc</serializedValue>
+          <serializedValue>http://localhost:62293/EmployeeManagementService.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -336,10 +336,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="WSHttpBinding_IRetrieveEmpDetails" contract="EmployeeServiceReference.IRetrieveEmpDetails" bindingType="wsHttpBinding" address="http://localhost:62293/Service1.svc" bindingConfiguration="WSHttpBinding_IRetrieveEmpDetails">
+    <endpoint name="WSHttpBinding_IRetrieveEmpDetails" contract="EmployeeServiceReference.IRetrieveEmpDetails" bindingType="wsHttpBinding" address="http://localhost:62293/EmployeeManagementService.svc" bindingConfiguration="WSHttpBinding_IRetrieveEmpDetails">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:62293/Service1.svc</serializedValue>
+          <serializedValue>http://localhost:62293/EmployeeManagementService.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

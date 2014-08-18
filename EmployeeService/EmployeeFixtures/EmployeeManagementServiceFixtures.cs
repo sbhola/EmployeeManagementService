@@ -1,6 +1,4 @@
-﻿using System;
-using System.Security.Policy;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using EmployeeFixtures.EmployeeServiceReference;
 using System.Diagnostics;
 using System.ServiceModel;
@@ -108,13 +106,30 @@ namespace EmployeeFixtures
         [TestMethod]
         public void TestAddNewEmployee()
         {
-                using (var client = new CreateOrModifyEmployeeClient())
-                {
-                    var emp = client.CreateEmployee(4, "Rajnikant", "yenna rascala");
-                    Assert.AreEqual(emp.EmpId, 4);
-                    Assert.AreEqual(emp.EmpName, "Rajnikant");
-                    Assert.AreEqual(emp.Remark.Text, "yenna rascala");
-                }
+            using (var client = new CreateOrModifyEmployeeClient())
+            {
+                var emp = client.CreateEmployee(4, "Rajnikant", "yenna rascala");
+                Assert.AreEqual(emp.EmpId, 4);
+                Assert.AreEqual(emp.EmpName, "Rajnikant");
+                Assert.AreEqual(emp.Remark.Text, "yenna rascala");
+            }
+        }
+
+        /// <summary>
+        /// Test to add an employee which already exists.
+        /// Should Throw FaultException with message employee id already exists.
+        /// </summary>
+        [TestMethod]
+        [ExpectedException(typeof(FaultException))]
+        public void TestAddExistingEmployeeShouldThrow()
+        {
+            using (var client = new CreateOrModifyEmployeeClient())
+            {
+                var emp = client.CreateEmployee(4, "Rajnikant", "yenna rascala");
+                Assert.AreEqual(emp.EmpId, 4);
+                Assert.AreEqual(emp.EmpName, "Rajnikant");
+                Assert.AreEqual(emp.Remark.Text, "yenna rascala");
+            }
         }
 
         /// <summary>
@@ -126,14 +141,7 @@ namespace EmployeeFixtures
             using (var client = new RetrieveEmpDetailsClient())
             {
                 var employees = client.GetAllEmployeeList();
-                Console.WriteLine(employees.Length);
-                foreach (var emp in employees)
-                {
-                    Console.WriteLine(emp.EmpId);
-                    Console.WriteLine(emp.EmpName);
-                    Console.WriteLine(emp.Remark.Text);
-                    Console.WriteLine(emp.Remark.RemarkTimestamp);
-                }
+                Assert.AreEqual(employees.Length, 3);
             }
         }
 
@@ -142,26 +150,26 @@ namespace EmployeeFixtures
         {
             using (var client = new RetrieveEmpDetailsClient())
             {
-                    var emp = client.GetEmployeeDetailsByName("Rajnikant");
-                    Assert.AreEqual(emp.EmpId, 4);
-                    Assert.AreEqual(emp.EmpName, "Rajnikant");
-                    Assert.AreEqual(emp.Remark.Text, "yenna rascala");
+                var emp = client.GetEmployeeDetailsByName("Rajnikant");
+                Assert.AreEqual(emp.EmpId, 4);
+                Assert.AreEqual(emp.EmpName, "Rajnikant");
+                Assert.AreEqual(emp.Remark.Text, "yenna rascala");
             }
         }
 
-        /// <summary>
-        /// Get the employee details by Name when the name is not present in the Database.
-        /// Should Throw FaultException
-        /// </summary>
-        //[TestMethod]
-        //[ExpectedException(typeof(FaultException))]
-        //public void TestGetIncorrectEmployeeDetailsByName()
-        //{
-        //    using (var client = new RetrieveEmpDetailsClient())
-        //    {
-        //        string name = "maharaja";
-        //        var employee = client.GetEmployeeDetailsByName(name);
-        //    }
-        //}
+        ///<summary>
+        ///Get the employee details by Name when the name is not present in the Database.
+        ///Should Throw FaultException
+        ///</summary>
+        [TestMethod]
+        [ExpectedException(typeof(FaultException))]
+        public void TestGetIncorrectEmployeeDetailsByName()
+        {
+            using (var client = new RetrieveEmpDetailsClient())
+            {
+                string name = "maharaja";
+                var employee = client.GetEmployeeDetailsByName(name);
+            }
+        }
     }
 }
