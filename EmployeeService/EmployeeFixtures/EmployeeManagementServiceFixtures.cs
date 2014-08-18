@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Runtime.InteropServices;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using EmployeeFixtures.EmployeeServiceReference;
 using System.Diagnostics;
 using System.ServiceModel;
@@ -126,9 +127,6 @@ namespace EmployeeFixtures
             using (var client = new CreateOrModifyEmployeeClient())
             {
                 var emp = client.CreateEmployee(4, "Rajnikant", "yenna rascala");
-                Assert.AreEqual(emp.EmpId, 4);
-                Assert.AreEqual(emp.EmpName, "Rajnikant");
-                Assert.AreEqual(emp.Remark.Text, "yenna rascala");
             }
         }
 
@@ -171,5 +169,33 @@ namespace EmployeeFixtures
                 var employee = client.GetEmployeeDetailsByName(name);
             }
         }
+
+        [TestMethod]
+        public void TestDeleteExistingEmployee()
+        {
+            using (var retrieveClient = new RetrieveEmpDetailsClient())
+            {
+                var empList = retrieveClient.GetAllEmployeeList();
+                Assert.AreEqual(empList.Length, 3);
+
+                using (var client = new CreateOrModifyEmployeeClient())
+                {
+                    client.DeleteEmployeeById(1);
+                }
+                empList = retrieveClient.GetAllEmployeeList();
+                Assert.AreEqual(empList.Length, 2);
+            }
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(FaultException))]
+        public void TestDeleteNonExistingEmployeeShouldThrow()
+        {
+            using (var client = new CreateOrModifyEmployeeClient())
+            {
+                client.DeleteEmployeeById(1);
+            }
+        }
+
     }
 }

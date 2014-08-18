@@ -168,6 +168,13 @@ namespace EmployeeFixtures.EmployeeServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICreateOrModifyEmployee/AddRemarks", ReplyAction="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksResponse")]
         System.Threading.Tasks.Task AddRemarksAsync(int id, string remarks);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICreateOrModifyEmployee/DeleteEmployeeById", ReplyAction="http://tempuri.org/ICreateOrModifyEmployee/DeleteEmployeeByIdResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/ICreateOrModifyEmployee/DeleteEmployeeByIdFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
+        void DeleteEmployeeById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICreateOrModifyEmployee/DeleteEmployeeById", ReplyAction="http://tempuri.org/ICreateOrModifyEmployee/DeleteEmployeeByIdResponse")]
+        System.Threading.Tasks.Task DeleteEmployeeByIdAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -211,6 +218,14 @@ namespace EmployeeFixtures.EmployeeServiceReference {
         
         public System.Threading.Tasks.Task AddRemarksAsync(int id, string remarks) {
             return base.Channel.AddRemarksAsync(id, remarks);
+        }
+        
+        public void DeleteEmployeeById(int id) {
+            base.Channel.DeleteEmployeeById(id);
+        }
+        
+        public System.Threading.Tasks.Task DeleteEmployeeByIdAsync(int id) {
+            return base.Channel.DeleteEmployeeByIdAsync(id);
         }
     }
     

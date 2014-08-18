@@ -12,5 +12,9 @@ namespace EmployeeService
         [OperationContract]
         [FaultContract(typeof(FaultException))]
         void AddRemarks(int id, string remarks);
+
+        [OperationContract]
+        [FaultContract(typeof(FaultException))]
+        void DeleteEmployeeById(int id);
     }
 }

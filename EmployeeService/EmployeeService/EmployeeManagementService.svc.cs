@@ -64,12 +64,27 @@ namespace EmployeeService
                 //selectedEmployee.Remark.text = remarks;
                 //Console.WriteLine("Remark changes");
 
-                int index = _employees.IndexOf(_employees.Where(emp => emp.EmpId == id).First());
+                int index = _employees.IndexOf(_employees.First(emp => emp.EmpId == id));
                 _employees[index].Remark.Text = remarks;
                 Debug.WriteLine("Remark changed");                
             }
             //throw new FaultException("Employee id for which you want to add remarks is not present in database.Please try again.",new FaultCode("Employee ID does not exist"));
             throw FaultException.CreateFault(MessageFault.CreateFault(new FaultCode("102"), "Employee ID does not exist"));
+        }
+
+        public void DeleteEmployeeById(int id)
+        {
+            if (_employees.Any(emp => emp.EmpId == id))
+            {
+                int index = _employees.IndexOf(_employees.First(emp => emp.EmpId == id));
+                //_employees.RemoveAt(index);
+                _employees.Remove(_employees.First(emp => emp.EmpId == id));
+                Debug.WriteLine("Employee removed");
+            }
+            else
+            {
+                throw new FaultException("Employee does not exists .Please try again");
+            }
         }
 
         /// <summary>
