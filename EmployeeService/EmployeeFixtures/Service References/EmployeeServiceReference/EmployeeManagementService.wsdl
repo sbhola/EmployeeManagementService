@@ -134,7 +134,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_ICreateOrModifyEmployee_CreateEmployee_FaultExceptionFault_Fault">
+  <wsp:Policy wsu:Id="WSHttpBinding_ICreateOrModifyEmployee_CreateEmployee_EmployeeAlreadyExistsFaultFault_Fault">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -191,7 +191,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_ICreateOrModifyEmployee_AddRemarks_FaultExceptionFault_Fault">
+  <wsp:Policy wsu:Id="WSHttpBinding_ICreateOrModifyEmployee_AddRemarks_EmployeeDoesNotExistsFault_Fault">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -248,7 +248,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_ICreateOrModifyEmployee_DeleteEmployeeById_FaultExceptionFault_Fault">
+  <wsp:Policy wsu:Id="WSHttpBinding_ICreateOrModifyEmployee_DeleteEmployeeById_EmployeeDoesNotExistsFault_Fault">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -553,7 +553,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IRetrieveEmpDetails_GetEmployeeDetailsByName_FaultExceptionFault_Fault">
+  <wsp:Policy wsu:Id="WSHttpBinding_IRetrieveEmpDetails_GetEmployeeDetailsByName_EmployeeDoesNotExistsFault_Fault">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -575,9 +575,9 @@
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:62293/EmployeeManagementService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://localhost:62293/EmployeeManagementService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel" />
-      <xsd:import schemaLocation="http://localhost:62293/EmployeeManagementService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:62293/EmployeeManagementService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/EmployeeService" />
+      <xsd:import schemaLocation="http://localhost:62293/EmployeeManagementService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:62293/EmployeeManagementService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel" />
       <xsd:import schemaLocation="http://localhost:62293/EmployeeManagementService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System" />
     </xsd:schema>
   </wsdl:types>
@@ -587,8 +587,8 @@
   <wsdl:message name="ICreateOrModifyEmployee_CreateEmployee_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateEmployeeResponse" />
   </wsdl:message>
-  <wsdl:message name="ICreateOrModifyEmployee_CreateEmployee_FaultExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q1:FaultException" />
+  <wsdl:message name="ICreateOrModifyEmployee_CreateEmployee_EmployeeAlreadyExistsFaultFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/EmployeeService" name="detail" element="q1:EmployeeAlreadyExistsFault" />
   </wsdl:message>
   <wsdl:message name="ICreateOrModifyEmployee_AddRemarks_InputMessage">
     <wsdl:part name="parameters" element="tns:AddRemarks" />
@@ -596,8 +596,8 @@
   <wsdl:message name="ICreateOrModifyEmployee_AddRemarks_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddRemarksResponse" />
   </wsdl:message>
-  <wsdl:message name="ICreateOrModifyEmployee_AddRemarks_FaultExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q2:FaultException" />
+  <wsdl:message name="ICreateOrModifyEmployee_AddRemarks_EmployeeDoesNotExistsFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/EmployeeService" name="detail" element="q2:EmployeeDoesNotExists" />
   </wsdl:message>
   <wsdl:message name="ICreateOrModifyEmployee_DeleteEmployeeById_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteEmployeeById" />
@@ -605,8 +605,8 @@
   <wsdl:message name="ICreateOrModifyEmployee_DeleteEmployeeById_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteEmployeeByIdResponse" />
   </wsdl:message>
-  <wsdl:message name="ICreateOrModifyEmployee_DeleteEmployeeById_FaultExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q3:FaultException" />
+  <wsdl:message name="ICreateOrModifyEmployee_DeleteEmployeeById_EmployeeDoesNotExistsFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/EmployeeService" name="detail" element="q3:EmployeeDoesNotExists" />
   </wsdl:message>
   <wsdl:message name="ICreateOrModifyEmployee_DisposeEmployeeList_InputMessage">
     <wsdl:part name="parameters" element="tns:DisposeEmployeeList" />
@@ -638,24 +638,24 @@
   <wsdl:message name="IRetrieveEmpDetails_GetEmployeeDetailsByName_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetEmployeeDetailsByNameResponse" />
   </wsdl:message>
-  <wsdl:message name="IRetrieveEmpDetails_GetEmployeeDetailsByName_FaultExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q6:FaultException" />
+  <wsdl:message name="IRetrieveEmpDetails_GetEmployeeDetailsByName_EmployeeDoesNotExistsFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/EmployeeService" name="detail" element="q6:EmployeeDoesNotExists" />
   </wsdl:message>
   <wsdl:portType name="ICreateOrModifyEmployee">
     <wsdl:operation name="CreateEmployee">
       <wsdl:input wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/CreateEmployee" message="tns:ICreateOrModifyEmployee_CreateEmployee_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/CreateEmployeeResponse" message="tns:ICreateOrModifyEmployee_CreateEmployee_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/CreateEmployeeFaultExceptionFault" name="FaultExceptionFault" message="tns:ICreateOrModifyEmployee_CreateEmployee_FaultExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/CreateEmployeeEmployeeAlreadyExistsFaultFault" name="EmployeeAlreadyExistsFaultFault" message="tns:ICreateOrModifyEmployee_CreateEmployee_EmployeeAlreadyExistsFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddRemarks">
       <wsdl:input wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/AddRemarks" message="tns:ICreateOrModifyEmployee_AddRemarks_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksResponse" message="tns:ICreateOrModifyEmployee_AddRemarks_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksFaultExceptionFault" name="FaultExceptionFault" message="tns:ICreateOrModifyEmployee_AddRemarks_FaultExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksEmployeeDoesNotExistsFault" name="EmployeeDoesNotExistsFault" message="tns:ICreateOrModifyEmployee_AddRemarks_EmployeeDoesNotExistsFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteEmployeeById">
       <wsdl:input wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/DeleteEmployeeById" message="tns:ICreateOrModifyEmployee_DeleteEmployeeById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/DeleteEmployeeByIdResponse" message="tns:ICreateOrModifyEmployee_DeleteEmployeeById_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/DeleteEmployeeByIdFaultExceptionFault" name="FaultExceptionFault" message="tns:ICreateOrModifyEmployee_DeleteEmployeeById_FaultExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/DeleteEmployeeByIdEmployeeDoesNotExistsFault" name="EmployeeDoesNotExistsFault" message="tns:ICreateOrModifyEmployee_DeleteEmployeeById_EmployeeDoesNotExistsFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="DisposeEmployeeList">
       <wsdl:input wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/DisposeEmployeeList" message="tns:ICreateOrModifyEmployee_DisposeEmployeeList_InputMessage" />
@@ -676,7 +676,7 @@
     <wsdl:operation name="GetEmployeeDetailsByName">
       <wsdl:input wsaw:Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByName" message="tns:IRetrieveEmpDetails_GetEmployeeDetailsByName_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByNameResponse" message="tns:IRetrieveEmpDetails_GetEmployeeDetailsByName_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByNameFaultExceptionFault" name="FaultExceptionFault" message="tns:IRetrieveEmpDetails_GetEmployeeDetailsByName_FaultExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByNameEmployeeDoesNotExistsFault" name="EmployeeDoesNotExistsFault" message="tns:IRetrieveEmpDetails_GetEmployeeDetailsByName_EmployeeDoesNotExistsFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_ICreateOrModifyEmployee" type="tns:ICreateOrModifyEmployee">
@@ -692,9 +692,9 @@
         <wsp:PolicyReference URI="#WSHttpBinding_ICreateOrModifyEmployee_CreateEmployee_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
-      <wsdl:fault name="FaultExceptionFault">
-        <wsp:PolicyReference URI="#WSHttpBinding_ICreateOrModifyEmployee_CreateEmployee_FaultExceptionFault_Fault" />
-        <soap12:fault use="literal" name="FaultExceptionFault" namespace="" />
+      <wsdl:fault name="EmployeeAlreadyExistsFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_ICreateOrModifyEmployee_CreateEmployee_EmployeeAlreadyExistsFaultFault_Fault" />
+        <soap12:fault use="literal" name="EmployeeAlreadyExistsFaultFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="AddRemarks">
@@ -707,9 +707,9 @@
         <wsp:PolicyReference URI="#WSHttpBinding_ICreateOrModifyEmployee_AddRemarks_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
-      <wsdl:fault name="FaultExceptionFault">
-        <wsp:PolicyReference URI="#WSHttpBinding_ICreateOrModifyEmployee_AddRemarks_FaultExceptionFault_Fault" />
-        <soap12:fault use="literal" name="FaultExceptionFault" namespace="" />
+      <wsdl:fault name="EmployeeDoesNotExistsFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_ICreateOrModifyEmployee_AddRemarks_EmployeeDoesNotExistsFault_Fault" />
+        <soap12:fault use="literal" name="EmployeeDoesNotExistsFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="DeleteEmployeeById">
@@ -722,9 +722,9 @@
         <wsp:PolicyReference URI="#WSHttpBinding_ICreateOrModifyEmployee_DeleteEmployeeById_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
-      <wsdl:fault name="FaultExceptionFault">
-        <wsp:PolicyReference URI="#WSHttpBinding_ICreateOrModifyEmployee_DeleteEmployeeById_FaultExceptionFault_Fault" />
-        <soap12:fault use="literal" name="FaultExceptionFault" namespace="" />
+      <wsdl:fault name="EmployeeDoesNotExistsFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_ICreateOrModifyEmployee_DeleteEmployeeById_EmployeeDoesNotExistsFault_Fault" />
+        <soap12:fault use="literal" name="EmployeeDoesNotExistsFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="DisposeEmployeeList">
@@ -782,9 +782,9 @@
         <wsp:PolicyReference URI="#WSHttpBinding_IRetrieveEmpDetails_GetEmployeeDetailsByName_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
-      <wsdl:fault name="FaultExceptionFault">
-        <wsp:PolicyReference URI="#WSHttpBinding_IRetrieveEmpDetails_GetEmployeeDetailsByName_FaultExceptionFault_Fault" />
-        <soap12:fault use="literal" name="FaultExceptionFault" namespace="" />
+      <wsdl:fault name="EmployeeDoesNotExistsFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRetrieveEmpDetails_GetEmployeeDetailsByName_EmployeeDoesNotExistsFault_Fault" />
+        <soap12:fault use="literal" name="EmployeeDoesNotExistsFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>

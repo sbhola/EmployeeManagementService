@@ -6,15 +6,15 @@ namespace EmployeeService
     public interface ICreateOrModifyEmployee
     {
         [OperationContract]
-        [FaultContract(typeof(FaultException))]
+        [FaultContract(typeof(EmployeeAlreadyExistsFault))]
         Employee CreateEmployee(int id, string name, string remarks);
 
         [OperationContract]
-        [FaultContract(typeof(FaultException))]
+        [FaultContract(typeof(EmployeeDoesNotExists))]
         void AddRemarks(int id, string remarks);
 
         [OperationContract]
-        [FaultContract(typeof(FaultException))]
+        [FaultContract(typeof(EmployeeDoesNotExists))]
         void DeleteEmployeeById(int id);
 
         [OperationContract]

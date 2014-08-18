@@ -25,24 +25,20 @@ namespace EmployeeService
         /// <returns>Employee</returns>
         public Employee CreateEmployee(int id, string name, string remarks)
         {
-                //Check if the employee id is already present in the list,is yes then throw.
-                if (_employees.Any(emp1 => emp1.EmpId == id))
+            //Check if the employee id is already present in the list,is yes then throw.
+            if (_employees.Any(emp1 => emp1.EmpId == id))
+            {
+                DisposeEmployeeList();
+
+                EmployeeAlreadyExistsFault fault = new EmployeeAlreadyExistsFault
                 {
-                    //throw new FaultException("Employee id Already present. Please try again" ,new FaultCode("Employee ID Already present"));
+                    FaultId = 101,
+                    Message = "Employee Already Exists.Please try again"
+                };
+                throw new FaultException<EmployeeAlreadyExistsFault>
+                    (fault, "Employee Already Exists.");
+            }
 
-                   DisposeEmployeeList();
-
-                    throw FaultException.CreateFault(MessageFault.CreateFault(new FaultCode("101"),
-                        "Employee ID Already present"));
-
-                    //EmployeeAlreadyExistsFault fault = new EmployeeAlreadyExistsFault
-                    //{
-                    //    FaultId = 101,
-                    //    Message = "Employee id Already present. Please try again"
-                    //};
-
-                }
-            
             //Else create a new employee and add it in the list
             Employee emp = new Employee();
             emp.EmpId = id;
@@ -79,9 +75,16 @@ namespace EmployeeService
                 _employees[index].Remark.Text = remarks;
                 Debug.WriteLine("Remark changed");
             }
-            DisposeEmployeeList();
-            //throw new FaultException("Employee id for which you want to add remarks is not present in database.Please try again.",new FaultCode("Employee ID does not exist"));
-            throw FaultException.CreateFault(MessageFault.CreateFault(new FaultCode("102"), "Employee ID does not exist"));
+            else
+            {
+                DisposeEmployeeList();
+                EmployeeDoesNotExists fault = new EmployeeDoesNotExists
+                {
+                    FaultId = 102,
+                    Message = "Employee Does not exits"
+                };
+                throw new FaultException<EmployeeDoesNotExists>(fault, "Employee Does not exists.");
+            }
         }
 
         public void DeleteEmployeeById(int id)
@@ -96,7 +99,12 @@ namespace EmployeeService
             else
             {
                 DisposeEmployeeList();
-                throw new FaultException("Employee does not exists .Please try again");
+                EmployeeDoesNotExists fault = new EmployeeDoesNotExists
+                {
+                    FaultId = 104,
+                    Message = "Employee id you want to delete does not exists.Please try again."
+                };
+                throw new FaultException<EmployeeDoesNotExists>(fault, "Employee id you want to delete does not exists");
             }
         }
 
@@ -146,9 +154,17 @@ namespace EmployeeService
                 Employee selectedEmployee = _employees.Where(emp => emp.EmpName == name).First();
                 return selectedEmployee;
             }
-            DisposeEmployeeList();
-            //throw new FaultException("Employee Name does not exists in the database.Please try again", new FaultCode("Employee Name does not exist"));
-            throw FaultException.CreateFault(MessageFault.CreateFault(new FaultCode("105"), "Employee Name does not exist"));
+            else
+            {
+                DisposeEmployeeList();
+                EmployeeDoesNotExists fault = new EmployeeDoesNotExists
+                {
+                    FaultId = 103,
+                    Message = "Employee Name you searched does not Exist.Please try again"
+                };
+                throw new FaultException<EmployeeDoesNotExists>(fault, "Employee Name you searched does not Exist");
+
+            }
         }
 
         public void DisposeEmployeeList()

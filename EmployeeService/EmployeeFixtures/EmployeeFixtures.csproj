@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Properties\DataSources\EmployeeService.Employee.datasource" />
     <None Include="Service References\EmployeeServiceReference\EmployeeFixtures.EmployeeServiceReference.Employee.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

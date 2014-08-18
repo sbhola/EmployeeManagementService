@@ -15,6 +15,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Remarks" nillable="true" type="tns:Remarks" />
+  <xs:complexType name="EmployeeAlreadyExistsFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FaultId" type="xs:int" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EmployeeAlreadyExistsFault" nillable="true" type="tns:EmployeeAlreadyExistsFault" />
+  <xs:complexType name="EmployeeDoesNotExists">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FaultId" type="xs:int" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EmployeeDoesNotExists" nillable="true" type="tns:EmployeeDoesNotExists" />
   <xs:complexType name="ArrayOfEmployee">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Employee" nillable="true" type="tns:Employee" />

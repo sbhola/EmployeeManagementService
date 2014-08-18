@@ -1,8 +1,11 @@
-﻿using System.Runtime.InteropServices;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using EmployeeFixtures.EmployeeServiceReference;
 using System.Diagnostics;
 using System.ServiceModel;
+using EmployeeAlreadyExistsFault = EmployeeFixtures.EmployeeServiceReference.EmployeeAlreadyExistsFault;
+using EmployeeDoesNotExists = EmployeeFixtures.EmployeeServiceReference.EmployeeDoesNotExists;
+
+//using Employee = EmployeeFixtures.EmployeeServiceReference.Employee;
 
 /*
 Test Scenarios :
@@ -44,7 +47,6 @@ namespace EmployeeFixtures
         /// Test for : Modifying remark for an existing employee 
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof(FaultException))]
         public void TestAddRemarkForExistingEmployee()
         {
             using (var client = new CreateOrModifyEmployeeClient())
@@ -57,7 +59,6 @@ namespace EmployeeFixtures
                     var empModified = retrieveClient.GetEmployeeDetailsById(1);
                     Assert.AreEqual(empModified.Remark.Text, "sad boy");
                 }
-                
                 client.DisposeEmployeeList();
             }
         }
@@ -67,7 +68,7 @@ namespace EmployeeFixtures
         /// Expected FaultException with message "Employee does not exist"
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof(FaultException))]
+        [ExpectedException(typeof(FaultException<EmployeeDoesNotExists>))]
         public void TestAddRemarkWhenEmployeeNotPresent()
         {
             using (var client = new CreateOrModifyEmployeeClient())
@@ -128,7 +129,7 @@ namespace EmployeeFixtures
         /// Should Throw FaultException with message employee id already exists.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof(FaultException))]
+        [ExpectedException(typeof(FaultException<EmployeeAlreadyExistsFault>))]
         public void TestAddExistingEmployeeShouldThrow()
         {
             using (var client = new CreateOrModifyEmployeeClient())
@@ -183,7 +184,7 @@ namespace EmployeeFixtures
         ///Should Throw FaultException
         ///</summary>
         [TestMethod]
-        [ExpectedException(typeof(FaultException))]
+        [ExpectedException(typeof(FaultException<EmployeeDoesNotExists>))]
         public void TestGetIncorrectEmployeeDetailsByName()
         {
             using (var createClient = new CreateOrModifyEmployeeClient())
@@ -228,7 +229,7 @@ namespace EmployeeFixtures
         }
 
         [TestMethod]
-        [ExpectedException(typeof(FaultException))]
+        [ExpectedException(typeof(FaultException<EmployeeDoesNotExists>))]
         public void TestDeleteNonExistingEmployeeShouldThrow()
         {
             using (var client = new CreateOrModifyEmployeeClient())
