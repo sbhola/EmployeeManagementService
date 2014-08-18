@@ -306,7 +306,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IRetrieveEmpDetails_GetEmployeeDetailsByID_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_IRetrieveEmpDetails_GetEmployeeDetailsById_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -325,7 +325,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IRetrieveEmpDetails_GetEmployeeDetailsByID_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_IRetrieveEmpDetails_GetEmployeeDetailsById_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -344,7 +344,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IRetrieveEmpDetails_GetEmployeeDetailsByID_FaultExceptionFault_Fault">
+  <wsp:Policy wsu:Id="WSHttpBinding_IRetrieveEmpDetails_GetEmployeeDetailsById_FaultExceptionFault_Fault">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -504,13 +504,13 @@
   <wsdl:message name="ICreateOrModifyEmployee_AddRemarks_FaultExceptionFault_FaultMessage">
     <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q2:FaultException" />
   </wsdl:message>
-  <wsdl:message name="IRetrieveEmpDetails_GetEmployeeDetailsByID_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetEmployeeDetailsByID" />
+  <wsdl:message name="IRetrieveEmpDetails_GetEmployeeDetailsById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeDetailsById" />
   </wsdl:message>
-  <wsdl:message name="IRetrieveEmpDetails_GetEmployeeDetailsByID_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetEmployeeDetailsByIDResponse" />
+  <wsdl:message name="IRetrieveEmpDetails_GetEmployeeDetailsById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeDetailsByIdResponse" />
   </wsdl:message>
-  <wsdl:message name="IRetrieveEmpDetails_GetEmployeeDetailsByID_FaultExceptionFault_FaultMessage">
+  <wsdl:message name="IRetrieveEmpDetails_GetEmployeeDetailsById_FaultExceptionFault_FaultMessage">
     <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q3:FaultException" />
   </wsdl:message>
   <wsdl:message name="IRetrieveEmpDetails_GetAllEmployeeList_InputMessage">
@@ -544,10 +544,10 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IRetrieveEmpDetails">
-    <wsdl:operation name="GetEmployeeDetailsByID">
-      <wsdl:input wsaw:Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByID" message="tns:IRetrieveEmpDetails_GetEmployeeDetailsByID_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByIDResponse" message="tns:IRetrieveEmpDetails_GetEmployeeDetailsByID_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByIDFaultExceptionFault" name="FaultExceptionFault" message="tns:IRetrieveEmpDetails_GetEmployeeDetailsByID_FaultExceptionFault_FaultMessage" />
+    <wsdl:operation name="GetEmployeeDetailsById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsById" message="tns:IRetrieveEmpDetails_GetEmployeeDetailsById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByIdResponse" message="tns:IRetrieveEmpDetails_GetEmployeeDetailsById_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByIdFaultExceptionFault" name="FaultExceptionFault" message="tns:IRetrieveEmpDetails_GetEmployeeDetailsById_FaultExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAllEmployeeList">
       <wsdl:input wsaw:Action="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeList" message="tns:IRetrieveEmpDetails_GetAllEmployeeList_InputMessage" />
@@ -597,18 +597,18 @@
   <wsdl:binding name="WSHttpBinding_IRetrieveEmpDetails" type="tns:IRetrieveEmpDetails">
     <wsp:PolicyReference URI="#WSHttpBinding_IRetrieveEmpDetails_policy" />
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetEmployeeDetailsByID">
-      <soap12:operation soapAction="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByID" style="document" />
+    <wsdl:operation name="GetEmployeeDetailsById">
+      <soap12:operation soapAction="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsById" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IRetrieveEmpDetails_GetEmployeeDetailsByID_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_IRetrieveEmpDetails_GetEmployeeDetailsById_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IRetrieveEmpDetails_GetEmployeeDetailsByID_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_IRetrieveEmpDetails_GetEmployeeDetailsById_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
       <wsdl:fault name="FaultExceptionFault">
-        <wsp:PolicyReference URI="#WSHttpBinding_IRetrieveEmpDetails_GetEmployeeDetailsByID_FaultExceptionFault_Fault" />
+        <wsp:PolicyReference URI="#WSHttpBinding_IRetrieveEmpDetails_GetEmployeeDetailsById_FaultExceptionFault_Fault" />
         <soap12:fault use="literal" name="FaultExceptionFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>

@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.ServiceModel.Channels;
-using System.Text;
 
 
 namespace EmployeeService
@@ -29,7 +25,7 @@ namespace EmployeeService
     {
         [OperationContract]
         [FaultContract(typeof(FaultException))]
-        Employee GetEmployeeDetailsByID(int id);
+        Employee GetEmployeeDetailsById(int id);
 
         [OperationContract]
         [FaultContract(typeof(FaultException))]
@@ -44,18 +40,17 @@ namespace EmployeeService
     public class Employee
     {
         [DataMember]
-        public int EmpID { get; set; }
+        public int EmpId { get; set; }
         [DataMember]
         public string EmpName { get; set; }
         [DataMember]
         public Remarks Remark { get; set; }
-
     }
 
     public class Remarks
     {
-        public string text { get; set; }
-        public DateTime remarkTimestamp { get; set; }
+        public string Text { get; set; }
+        public DateTime RemarkTimestamp { get; set; }
     }
 
 }

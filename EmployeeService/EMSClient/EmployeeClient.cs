@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using EMSClient.EMSReference;
 using System.ServiceModel;
-using System.ServiceModel.Channels;
 
 namespace EMSClient
 {
@@ -50,7 +45,7 @@ namespace EMSClient
 
         }
 
-        public void GetEmployeeDetailsByID(int id)
+        public void GetEmployeeDetailsById(int id)
         {
             try
             {

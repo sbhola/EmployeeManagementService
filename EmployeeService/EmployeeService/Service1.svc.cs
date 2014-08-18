@@ -28,21 +28,21 @@ namespace EmployeeService
         /// <returns>Employee</returns>
         public Employee CreateEmployee(int id, string name, string remarks)
         {
-            ///Check if the employee id is already present in the list,is yes then throw.
-            if (_employees.Any(emp1 => emp1.EmpID == id))
+            //Check if the employee id is already present in the list,is yes then throw.
+            if (_employees.Any(emp1 => emp1.EmpId == id))
             {
                 //throw new FaultException("Employee id Already present. Please try again" ,new FaultCode("Employee ID Already present"));
                 throw FaultException.CreateFault(MessageFault.CreateFault(new FaultCode("101"), "Employee ID Already present"));
             }
 
-            ///Else create a new employee and add it in the list
+            //Else create a new employee and add it in the list
             Employee emp = new Employee();
-            emp.EmpID = id;
+            emp.EmpId = id;
             emp.EmpName = name;
 
             Remarks remark = new Remarks();
-            remark.text = remarks;
-            remark.remarkTimestamp = DateTime.Now;
+            remark.Text = remarks;
+            remark.RemarkTimestamp = DateTime.Now;
 
             emp.Remark = remark;
 
@@ -61,14 +61,14 @@ namespace EmployeeService
         /// <returns>void</returns>
         public void AddRemarks(int id, string remarks)
         {
-            if (_employees.Any(emp => emp.EmpID == id))
+            if (_employees.Any(emp => emp.EmpId == id))
             {
                 //Employee selectedEmployee = Employees.Where(emp => emp.EmpID == id).First();
                 //selectedEmployee.Remark.text = remarks;
                 //Console.WriteLine("Remark changes");
 
-                int index = _employees.IndexOf(_employees.Where(emp => emp.EmpID == id).First());
-                _employees[index].Remark.text = remarks;
+                int index = _employees.IndexOf(_employees.Where(emp => emp.EmpId == id).First());
+                _employees[index].Remark.Text = remarks;
                 Debug.WriteLine("Remark changed");                
             }
             //throw new FaultException("Employee id for which you want to add remarks is not present in database.Please try again.",new FaultCode("Employee ID does not exist"));
@@ -81,11 +81,11 @@ namespace EmployeeService
         /// </summary>
         /// <param name="id">int</param>
         /// <returns>Employee</returns>
-        public Employee GetEmployeeDetailsByID(int id)
+        public Employee GetEmployeeDetailsById(int id)
         {
-            if (_employees.Any(emp => emp.EmpID == id))
+            if (_employees.Any(emp => emp.EmpId == id))
             {
-                Employee selectedEmployee = _employees.Where(emp => emp.EmpID == id).First();
+                Employee selectedEmployee = _employees.Where(emp => emp.EmpId == id).First();
                 return selectedEmployee;
             }
             //throw new FaultException("Employee ID requested is not present.Please try again.", new FaultCode("Employee id requested is not present"));

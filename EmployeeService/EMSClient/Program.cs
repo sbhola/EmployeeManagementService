@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EMSClient.EMSReference;
 
 namespace EMSClient
 {
@@ -46,7 +41,7 @@ namespace EMSClient
                     case 3:
                         Console.WriteLine("Enter employee id for which you want details :");
                         int getDetailsForID = Int32.Parse(Console.ReadLine());
-                        emp.GetEmployeeDetailsByID(getDetailsForID);                        
+                        emp.GetEmployeeDetailsById(getDetailsForID);                        
                         break;
                     case 4:
                         Console.WriteLine("Enter Employee Name for which you want details : ");
