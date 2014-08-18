@@ -8,8 +8,8 @@ namespace EMSClient
     {
         public void AddNewEmployee()
         {
-            Console.WriteLine("Enter the Employee ID ");
-            int empID = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the Employee Id ");
+            int empId = Int32.Parse(Console.ReadLine());
             Console.WriteLine("Enter the Employee Name");
             string empName = Console.ReadLine();
             Console.WriteLine("Enter Remarks about the Employee :");
@@ -18,7 +18,7 @@ namespace EMSClient
             {
                 using (var createOrModifyClient = new CreateOrModifyEmployeeClient())
                 {
-                    createOrModifyClient.CreateEmployee(empID, empName, empRemarks);
+                    createOrModifyClient.CreateEmployee(empId, empName, empRemarks);
                 }
             }                
             catch (FaultException ex)
@@ -51,11 +51,11 @@ namespace EMSClient
             {
                 using (var client = new RetrieveEmpDetailsClient())
                 {
-                    var emp = client.GetEmployeeDetailsByID(id);
-                    Console.WriteLine(emp.EmpID);
+                    var emp = client.GetEmployeeDetailsById(id);
+                    Console.WriteLine(emp.EmpId);
                     Console.WriteLine(emp.EmpName);
-                    Console.WriteLine(emp.Remark.text);
-                    Console.WriteLine(emp.Remark.remarkTimestamp);
+                    Console.WriteLine(emp.Remark.Text);
+                    Console.WriteLine(emp.Remark.RemarkTimestamp);
                 }
             }
             catch (FaultException ex)
@@ -72,10 +72,10 @@ namespace EMSClient
                 using (var client = new RetrieveEmpDetailsClient())
                 {
                     var emp = client.GetEmployeeDetailsByName(name);
-                    Console.WriteLine(emp.EmpID);
+                    Console.WriteLine(emp.EmpId);
                     Console.WriteLine(emp.EmpName);
-                    Console.WriteLine(emp.Remark.text);
-                    Console.WriteLine(emp.Remark.remarkTimestamp);
+                    Console.WriteLine(emp.Remark.Text);
+                    Console.WriteLine(emp.Remark.RemarkTimestamp);
                 }
             }
             catch (FaultException ex)
@@ -94,10 +94,10 @@ namespace EMSClient
                     var empList = client.GetAllEmployeeList();
                     foreach(var emp in empList)
                     {
-                        Console.WriteLine("Employee ID : " + emp.EmpID);
+                        Console.WriteLine("Employee Id : " + emp.EmpId);
                         Console.WriteLine("Employee Name : " + emp.EmpName);
-                        Console.WriteLine("Employee Remarks : " + emp.Remark.text);
-                        Console.WriteLine("Employee Remark TimeStamp : " + emp.Remark.remarkTimestamp);
+                        Console.WriteLine("Employee Remarks : " + emp.Remark.Text);
+                        Console.WriteLine("Employee Remark TimeStamp : " + emp.Remark.RemarkTimestamp);
                     }
                 }
 

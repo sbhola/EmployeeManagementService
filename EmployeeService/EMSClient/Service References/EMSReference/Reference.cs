@@ -9,6 +9,10 @@
 //------------------------------------------------------------------------------
 
 namespace EMSClient.EMSReference {
+    using System.Runtime.Serialization;
+    using System;
+    
+    
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Employee", Namespace="http://schemas.datacontract.org/2004/07/EmployeeService")]
@@ -19,7 +23,7 @@ namespace EMSClient.EMSReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int EmpIDField;
+        private int EmpIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EmpNameField;
@@ -38,14 +42,14 @@ namespace EMSClient.EMSReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int EmpID {
+        public int EmpId {
             get {
-                return this.EmpIDField;
+                return this.EmpIdField;
             }
             set {
-                if ((this.EmpIDField.Equals(value) != true)) {
-                    this.EmpIDField = value;
-                    this.RaisePropertyChanged("EmpID");
+                if ((this.EmpIdField.Equals(value) != true)) {
+                    this.EmpIdField = value;
+                    this.RaisePropertyChanged("EmpId");
                 }
             }
         }
@@ -96,10 +100,10 @@ namespace EMSClient.EMSReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime remarkTimestampField;
+        private System.DateTime RemarkTimestampField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string textField;
+        private string TextField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -112,27 +116,27 @@ namespace EMSClient.EMSReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime remarkTimestamp {
+        public System.DateTime RemarkTimestamp {
             get {
-                return this.remarkTimestampField;
+                return this.RemarkTimestampField;
             }
             set {
-                if ((this.remarkTimestampField.Equals(value) != true)) {
-                    this.remarkTimestampField = value;
-                    this.RaisePropertyChanged("remarkTimestamp");
+                if ((this.RemarkTimestampField.Equals(value) != true)) {
+                    this.RemarkTimestampField = value;
+                    this.RaisePropertyChanged("RemarkTimestamp");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string text {
+        public string Text {
             get {
-                return this.textField;
+                return this.TextField;
             }
             set {
-                if ((object.ReferenceEquals(this.textField, value) != true)) {
-                    this.textField = value;
-                    this.RaisePropertyChanged("text");
+                if ((object.ReferenceEquals(this.TextField, value) != true)) {
+                    this.TextField = value;
+                    this.RaisePropertyChanged("Text");
                 }
             }
         }
@@ -214,12 +218,12 @@ namespace EMSClient.EMSReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="EMSReference.IRetrieveEmpDetails")]
     public interface IRetrieveEmpDetails {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByID", ReplyAction="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByIDResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByIDFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
-        EMSClient.EMSReference.Employee GetEmployeeDetailsByID(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsById", ReplyAction="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByIdResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByIdFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
+        EMSClient.EMSReference.Employee GetEmployeeDetailsById(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByID", ReplyAction="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByIDResponse")]
-        System.Threading.Tasks.Task<EMSClient.EMSReference.Employee> GetEmployeeDetailsByIDAsync(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsById", ReplyAction="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByIdResponse")]
+        System.Threading.Tasks.Task<EMSClient.EMSReference.Employee> GetEmployeeDetailsByIdAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeList", ReplyAction="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeListResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeListFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
@@ -264,12 +268,12 @@ namespace EMSClient.EMSReference {
                 base(binding, remoteAddress) {
         }
         
-        public EMSClient.EMSReference.Employee GetEmployeeDetailsByID(int id) {
-            return base.Channel.GetEmployeeDetailsByID(id);
+        public EMSClient.EMSReference.Employee GetEmployeeDetailsById(int id) {
+            return base.Channel.GetEmployeeDetailsById(id);
         }
         
-        public System.Threading.Tasks.Task<EMSClient.EMSReference.Employee> GetEmployeeDetailsByIDAsync(int id) {
-            return base.Channel.GetEmployeeDetailsByIDAsync(id);
+        public System.Threading.Tasks.Task<EMSClient.EMSReference.Employee> GetEmployeeDetailsByIdAsync(int id) {
+            return base.Channel.GetEmployeeDetailsByIdAsync(id);
         }
         
         public EMSClient.EMSReference.Employee[] GetAllEmployeeList() {

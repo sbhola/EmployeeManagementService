@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Policy;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using EmployeeFixtures.EmployeeServiceReference;
 using System.Diagnostics;
@@ -137,7 +138,7 @@ namespace EmployeeFixtures
         }
 
         [TestMethod]
-        public void TestGetEmployeeDetailsByName()
+        public void TestGetCorrectEmployeeDetailsByName()
         {
             using (var client = new RetrieveEmpDetailsClient())
             {
@@ -147,5 +148,20 @@ namespace EmployeeFixtures
                     Assert.AreEqual(emp.Remark.Text, "yenna rascala");
             }
         }
+
+        /// <summary>
+        /// Get the employee details by Name when the name is not present in the Database.
+        /// Should Throw FaultException
+        /// </summary>
+        //[TestMethod]
+        //[ExpectedException(typeof(FaultException))]
+        //public void TestGetIncorrectEmployeeDetailsByName()
+        //{
+        //    using (var client = new RetrieveEmpDetailsClient())
+        //    {
+        //        string name = "maharaja";
+        //        var employee = client.GetEmployeeDetailsByName(name);
+        //    }
+        //}
     }
 }
