@@ -27,6 +27,15 @@ namespace EmployeeFixtures
     [TestClass]
     public class EmployeeManagementServiceFixtures
     {
+        [TestInitialize]
+        public void DisposeEmployeeList()
+        {
+            using (var client = new CreateOrModifyEmployeeClient())
+            {
+                client.DisposeEmployeeList();
+            }
+        }
+
         /// <summary>
         /// Test to Create an employee and add it to the list
         /// </summary>
@@ -39,7 +48,7 @@ namespace EmployeeFixtures
                 Assert.AreEqual(newEmployee.EmpId, 1);
                 Assert.AreEqual(newEmployee.EmpName, "sid");
                 Assert.AreEqual(newEmployee.Remark.Text, "good boy");
-                client.DisposeEmployeeList();
+               // client.DisposeEmployeeList();
             }
         }
 
@@ -59,7 +68,7 @@ namespace EmployeeFixtures
                     var empModified = retrieveClient.GetEmployeeDetailsById(1);
                     Assert.AreEqual(empModified.Remark.Text, "sad boy");
                 }
-                client.DisposeEmployeeList();
+               // client.DisposeEmployeeList();
             }
         }
 
@@ -80,7 +89,7 @@ namespace EmployeeFixtures
                     var empTried = retrieveClient.GetEmployeeDetailsById(6);
                     Assert.AreNotEqual(empTried.Remark.Text, "watta boy");
                 }
-                client.DisposeEmployeeList();
+              //  client.DisposeEmployeeList();
             }
         }
 
@@ -104,7 +113,7 @@ namespace EmployeeFixtures
                     Assert.AreEqual(emp1.Remark.Text, emp2.Remark.Text);
                     Debug.WriteLine(emp1.Remark.Text);
                 }
-                createClient.DisposeEmployeeList();
+             //   createClient.DisposeEmployeeList();
             }
         }
 
@@ -120,7 +129,7 @@ namespace EmployeeFixtures
                 Assert.AreEqual(emp.EmpId, 4);
                 Assert.AreEqual(emp.EmpName, "Rajnikant");
                 Assert.AreEqual(emp.Remark.Text, "yenna rascala");
-                client.DisposeEmployeeList();
+             //   client.DisposeEmployeeList();
             }
         }
 
@@ -136,7 +145,7 @@ namespace EmployeeFixtures
             {
                 var createEmployee = client.CreateEmployee(4, "Rajnikant", "yenna rascala");
                 var createExistingEmployee = client.CreateEmployee(4, "Rajnikant", "yenna rascala");
-                client.DisposeEmployeeList();
+             //   client.DisposeEmployeeList();
             }
         }
 
@@ -157,7 +166,7 @@ namespace EmployeeFixtures
                     var employees = client.GetAllEmployeeList();
                     Assert.AreEqual(employees.Length, 3);
                 }
-                createClient.DisposeEmployeeList();
+            //    createClient.DisposeEmployeeList();
             }
         }
 
@@ -185,7 +194,7 @@ namespace EmployeeFixtures
                     Assert.AreEqual(emp.EmpName, "Rajnikant");
                     Assert.AreEqual(emp.Remark.Text, "yenna rascala");
                 }
-                createClient.DisposeEmployeeList();
+              //  createClient.DisposeEmployeeList();
             }
         }
 
@@ -207,7 +216,7 @@ namespace EmployeeFixtures
                     string name = "maharaja";
                     var employee = client.GetEmployeeDetailsByName(name);
                 }
-                createClient.DisposeEmployeeList();
+            //    createClient.DisposeEmployeeList();
             }
 
         }
@@ -234,7 +243,7 @@ namespace EmployeeFixtures
                     var empList = retrieveClient.GetAllEmployeeList();
                     Assert.AreEqual(empList.Length, 2);
                 }
-                createClient.DisposeEmployeeList();
+            //    createClient.DisposeEmployeeList();
             }
         }
 
@@ -250,7 +259,7 @@ namespace EmployeeFixtures
 
                 client.DeleteEmployeeById(11);
 
-                client.DisposeEmployeeList();
+            //    client.DisposeEmployeeList();
             }
         }
     }
