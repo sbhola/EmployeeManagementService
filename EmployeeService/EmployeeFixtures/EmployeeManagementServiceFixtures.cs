@@ -44,7 +44,7 @@ namespace EmployeeFixtures
         {
             using (var client = new CreateOrModifyEmployeeClient())
             {
-                Employee newEmployee = client.CreateEmployee(1, "sid", "good boy");
+                Employee newEmployee = client.CreateEmployee("sid", "good boy");
                 Assert.AreEqual(newEmployee.EmpId, 1);
                 Assert.AreEqual(newEmployee.EmpName, "sid");
                 Assert.AreEqual(newEmployee.Remark.Text, "good boy");
@@ -60,7 +60,7 @@ namespace EmployeeFixtures
         {
             using (var client = new CreateOrModifyEmployeeClient())
             {
-                Employee newEmployee = client.CreateEmployee(1, "sid", "good boy");
+                Employee newEmployee = client.CreateEmployee("sid", "good boy");
                 client.AddRemarks(1, "sad boy");
 
                 using (var retrieveClient = new RetrieveEmpDetailsClient())
@@ -82,7 +82,7 @@ namespace EmployeeFixtures
         {
             using (var client = new CreateOrModifyEmployeeClient())
             {
-                client.CreateEmployee(1, "sid", "yoyo");
+                client.CreateEmployee( "sid", "yoyo");
                 client.AddRemarks(6, "watta boy");
                 using (var retrieveClient = new RetrieveEmpDetailsClient())
                 {
@@ -101,17 +101,14 @@ namespace EmployeeFixtures
         {
             using (var createClient = new CreateOrModifyEmployeeClient())
             {
-                var emp1 = createClient.CreateEmployee(2, "vinayak", "hello boy");
+                var emp1 = createClient.CreateEmployee( "vinayak", "hello boy");
 
                 using (var retrieveClient = new RetrieveEmpDetailsClient())
                 {
-                    var emp2 = retrieveClient.GetEmployeeDetailsById(2);
-                    Assert.AreEqual(emp1.EmpId, emp2.EmpId);
+                    var emp2 = retrieveClient.GetEmployeeDetailsById(1);
 
                     Assert.AreEqual(emp1.EmpName, emp2.EmpName);
-
                     Assert.AreEqual(emp1.Remark.Text, emp2.Remark.Text);
-                    Debug.WriteLine(emp1.Remark.Text);
                 }
              //   createClient.DisposeEmployeeList();
             }
@@ -125,26 +122,9 @@ namespace EmployeeFixtures
         {
             using (var client = new CreateOrModifyEmployeeClient())
             {
-                var emp = client.CreateEmployee(4, "Rajnikant", "yenna rascala");
-                Assert.AreEqual(emp.EmpId, 4);
+                var emp = client.CreateEmployee( "Rajnikant", "yenna rascala");
                 Assert.AreEqual(emp.EmpName, "Rajnikant");
                 Assert.AreEqual(emp.Remark.Text, "yenna rascala");
-             //   client.DisposeEmployeeList();
-            }
-        }
-
-        /// <summary>
-        /// Test to add an employee which already exists.
-        /// Should Throw FaultException with message employee id already exists.
-        /// </summary>
-        [TestMethod]
-        [ExpectedException(typeof(FaultException<EmployeeAlreadyExistsFault>))]
-        public void TestAddExistingEmployeeShouldThrow()
-        {
-            using (var client = new CreateOrModifyEmployeeClient())
-            {
-                var createEmployee = client.CreateEmployee(4, "Rajnikant", "yenna rascala");
-                var createExistingEmployee = client.CreateEmployee(4, "Rajnikant", "yenna rascala");
              //   client.DisposeEmployeeList();
             }
         }
@@ -157,9 +137,9 @@ namespace EmployeeFixtures
         {
             using (var createClient = new CreateOrModifyEmployeeClient())
             {
-                var emp1 = createClient.CreateEmployee(1, "sid", "watta boy");
-                var emp2 = createClient.CreateEmployee(2, "vinayak", "awesome ");
-                var emp3 = createClient.CreateEmployee(3, "saif", "smelly cat");
+                var emp1 = createClient.CreateEmployee( "sid", "watta boy");
+                var emp2 = createClient.CreateEmployee( "vinayak", "awesome ");
+                var emp3 = createClient.CreateEmployee("saif", "smelly cat");
 
                 using (var client = new RetrieveEmpDetailsClient())
                 {
@@ -185,12 +165,11 @@ namespace EmployeeFixtures
         {
             using (var createClient = new CreateOrModifyEmployeeClient())
             {
-                var createEmployee = createClient.CreateEmployee(4, "Rajnikant", "yenna rascala");
+                var createEmployee = createClient.CreateEmployee("Rajnikant", "yenna rascala");
 
                 using (var client = new RetrieveEmpDetailsClient())
                 {
                     var emp = client.GetEmployeeDetailsByName("Rajnikant");
-                    Assert.AreEqual(emp.EmpId, 4);
                     Assert.AreEqual(emp.EmpName, "Rajnikant");
                     Assert.AreEqual(emp.Remark.Text, "yenna rascala");
                 }
@@ -209,7 +188,7 @@ namespace EmployeeFixtures
             using (var createClient = new CreateOrModifyEmployeeClient())
             {
                 createClient.DisposeEmployeeList();
-                createClient.CreateEmployee(1, "baby", "baby doll me sone di ye duniya pittal di");
+                createClient.CreateEmployee("baby", "baby doll me sone di ye duniya pittal di");
 
                 using (var client = new RetrieveEmpDetailsClient())
                 {
@@ -226,9 +205,9 @@ namespace EmployeeFixtures
         {
             using (var createClient = new CreateOrModifyEmployeeClient())
             {
-                createClient.CreateEmployee(1, "sid", "watta boy");
-                createClient.CreateEmployee(2, "vinayak", "awesome boy");
-                createClient.CreateEmployee(3, "saif", "smelly boy");
+                createClient.CreateEmployee("sid", "watta boy");
+                createClient.CreateEmployee("vinayak", "awesome boy");
+                createClient.CreateEmployee("saif", "smelly boy");
 
                 using (var retrieveClient = new RetrieveEmpDetailsClient())
                 {
@@ -253,9 +232,9 @@ namespace EmployeeFixtures
         {
             using (var client = new CreateOrModifyEmployeeClient())
             {
-                client.CreateEmployee(1, "sid", "watta boy");
-                client.CreateEmployee(2, "vinayak", "shitty boy");
-                client.CreateEmployee(3, "saif", "smelly boy");
+                client.CreateEmployee("sid", "watta boy");
+                client.CreateEmployee("vinayak", "shitty boy");
+                client.CreateEmployee("saif", "smelly boy");
 
                 client.DeleteEmployeeById(11);
 

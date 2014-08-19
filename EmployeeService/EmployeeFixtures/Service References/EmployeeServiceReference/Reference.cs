@@ -280,10 +280,10 @@ namespace EmployeeFixtures.EmployeeServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICreateOrModifyEmployee/CreateEmployee", ReplyAction="http://tempuri.org/ICreateOrModifyEmployee/CreateEmployeeResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmployeeFixtures.EmployeeServiceReference.EmployeeAlreadyExistsFault), Action="http://tempuri.org/ICreateOrModifyEmployee/CreateEmployeeEmployeeAlreadyExistsFau" +
             "ltFault", Name="EmployeeAlreadyExistsFault", Namespace="http://schemas.datacontract.org/2004/07/EmployeeService")]
-        EmployeeFixtures.EmployeeServiceReference.Employee CreateEmployee(int id, string name, string remarks);
+        EmployeeFixtures.EmployeeServiceReference.Employee CreateEmployee(string name, string remarks);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICreateOrModifyEmployee/CreateEmployee", ReplyAction="http://tempuri.org/ICreateOrModifyEmployee/CreateEmployeeResponse")]
-        System.Threading.Tasks.Task<EmployeeFixtures.EmployeeServiceReference.Employee> CreateEmployeeAsync(int id, string name, string remarks);
+        System.Threading.Tasks.Task<EmployeeFixtures.EmployeeServiceReference.Employee> CreateEmployeeAsync(string name, string remarks);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICreateOrModifyEmployee/AddRemarks", ReplyAction="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmployeeFixtures.EmployeeServiceReference.EmployeeDoesNotExists), Action="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksEmployeeDoesNotExistsFault", Name="EmployeeDoesNotExists", Namespace="http://schemas.datacontract.org/2004/07/EmployeeService")]
@@ -334,12 +334,12 @@ namespace EmployeeFixtures.EmployeeServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public EmployeeFixtures.EmployeeServiceReference.Employee CreateEmployee(int id, string name, string remarks) {
-            return base.Channel.CreateEmployee(id, name, remarks);
+        public EmployeeFixtures.EmployeeServiceReference.Employee CreateEmployee(string name, string remarks) {
+            return base.Channel.CreateEmployee(name, remarks);
         }
         
-        public System.Threading.Tasks.Task<EmployeeFixtures.EmployeeServiceReference.Employee> CreateEmployeeAsync(int id, string name, string remarks) {
-            return base.Channel.CreateEmployeeAsync(id, name, remarks);
+        public System.Threading.Tasks.Task<EmployeeFixtures.EmployeeServiceReference.Employee> CreateEmployeeAsync(string name, string remarks) {
+            return base.Channel.CreateEmployeeAsync(name, remarks);
         }
         
         public void AddRemarks(int id, string remarks) {

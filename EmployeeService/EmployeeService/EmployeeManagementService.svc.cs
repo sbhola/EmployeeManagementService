@@ -13,6 +13,7 @@ namespace EmployeeService
         /// _employees is a static employee list which contains records of all the employees.
         /// </summary>
         private static List<Employee> _employees = new List<Employee>();
+        private static int _idGenerator = 0;
 
         /// <summary>
         /// Throws if the employee id is already present in the _employees list
@@ -23,10 +24,12 @@ namespace EmployeeService
         /// <param name="name">string</param>
         /// <param name="remarks">string</param>
         /// <returns>Employee</returns>
-        public Employee CreateEmployee(int id, string name, string remarks)
+        public Employee CreateEmployee(string name, string remarks)
         {
+            _idGenerator++;
+
             //Check if the employee id is already present in the list,is yes then throw.
-            if (_employees.Any(emp1 => emp1.EmpId == id))
+            if (_employees.Any(emp1 => emp1.EmpId == _idGenerator))
             {
                 DisposeEmployeeList();
 
@@ -41,7 +44,7 @@ namespace EmployeeService
 
             //Else create a new employee and add it in the list
             Employee emp = new Employee();
-            emp.EmpId = id;
+            emp.EmpId = _idGenerator;
             emp.EmpName = name;
 
             Remarks remark = new Remarks();
@@ -174,6 +177,7 @@ namespace EmployeeService
         {
             //_employees.Clear();
             _employees = new List<Employee>();
+            _idGenerator = 0;
         }
 
     }

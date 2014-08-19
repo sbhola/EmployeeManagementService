@@ -7,7 +7,7 @@ namespace EmployeeService
     {
         [OperationContract]
         [FaultContract(typeof(EmployeeAlreadyExistsFault))]
-        Employee CreateEmployee(int id, string name, string remarks);
+        Employee CreateEmployee(string name, string remarks);
 
         [OperationContract]
         [FaultContract(typeof(EmployeeDoesNotExists))]
