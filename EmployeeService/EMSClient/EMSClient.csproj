@@ -55,16 +55,10 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Service References\EMSReference\EmployeeManagementService.wsdl" />
-    <None Include="Service References\EMSReference\EmployeeManagementService.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\EMSReference\EmployeeManagementService1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\EMSReference\EmployeeManagementService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EMSReference\EmployeeManagementService3.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\EMSReference\EmployeeManagementService4.xsd">

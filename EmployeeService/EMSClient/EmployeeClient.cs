@@ -18,8 +18,8 @@ namespace EMSClient
                 {
                     createOrModifyClient.CreateEmployee(empName, empRemarks);
                 }
-            }                
-            catch (FaultException ex)
+            }
+            catch (FaultException<EmployeeAlreadyExistsFault> ex)
             {
                 Console.WriteLine(ex.Message);
                 Console.WriteLine(ex.Code);
@@ -32,10 +32,10 @@ namespace EMSClient
             {
                 using (var client = new CreateOrModifyEmployeeClient())
                 {
-                    client.AddRemarks(id,remarks);                    
+                    client.AddRemarksById(id,remarks);                    
                 }
             }
-            catch (FaultException ex)
+            catch (FaultException<EmployeeDoesNotExists> ex)
             {
                 Console.WriteLine(ex.Message);
                 Console.WriteLine(ex.Code);
@@ -56,7 +56,7 @@ namespace EMSClient
                     Console.WriteLine(emp.Remark.RemarkTimestamp);
                 }
             }
-            catch (FaultException ex)
+            catch (FaultException<EmployeeDoesNotExists> ex)
             {
                 Console.WriteLine(ex.Message);
                 Console.WriteLine(ex.Code);
@@ -76,7 +76,7 @@ namespace EMSClient
                     Console.WriteLine(emp.Remark.RemarkTimestamp);
                 }
             }
-            catch (FaultException ex)
+            catch (FaultException<EmployeeDoesNotExists> ex)
             {
                 Console.WriteLine(ex.Message);
                 Console.WriteLine(ex.Code);
@@ -99,12 +99,44 @@ namespace EMSClient
                     }
                 }
 
-            }   
-            catch (FaultException ex)
+            }
+            catch (FaultException<EmployeeDoesNotExists> ex)
             {
                 Console.WriteLine(ex.Message);
                 Console.WriteLine(ex.Code);
             }                 
+        }
+
+        public void DeleteEmployee(int id)
+        {
+            try
+            {
+                using (var client = new CreateOrModifyEmployeeClient())
+                {
+                    client.DeleteEmployeeById(id);
+                }
+            }
+            catch (FaultException<EmployeeDoesNotExists> ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
+
+        public void DeleteEmployee(string name)
+        {
+            try
+            {
+                using (var client = new CreateOrModifyEmployeeClient())
+                {
+                    client.DeleteEmployeeByName(name);
+                }
+            }
+            catch (FaultException<EmployeeDoesNotExists> ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
         }
 
     }

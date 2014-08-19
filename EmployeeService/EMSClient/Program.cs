@@ -21,6 +21,8 @@ namespace EMSClient
                 Console.WriteLine("3.Get Employee Details by ID");
                 Console.WriteLine("4. Get Emplyee Details by Name");
                 Console.WriteLine("5. Get All Employees List");
+                Console.WriteLine("6. Delete Employee By Id");
+                Console.WriteLine("7. Delete Employee By Name");
                 Console.WriteLine("9. Exit");
 
                 choice = Int32.Parse(Console.ReadLine());
@@ -52,16 +54,17 @@ namespace EMSClient
                         emp.GetAllEmployeeList();
                         break;
                     case 6:
+                        Console.WriteLine("Enter employee id which you want to delete :");
+                        int deleteEmployeeForID = Int32.Parse(Console.ReadLine());
+                        emp.DeleteEmployee(deleteEmployeeForID);
                         break;
-
-
+                    case 7:
+                         Console.WriteLine("Enter Employee Name which you want to delete : ");
+                        string deleteEmployeeByName = Console.ReadLine();
+                        emp.DeleteEmployee(deleteEmployeeByName);
+                        break;
                 }
             }
-            //var createOrModifyClient = new CreateOrModifyEmployeeClient();
-            //createOrModifyClient.Open();
-
-            //var retrieveClient = new RetrieveEmpDetailsClient();
-            //retrieveClient.Open();
 
         }
         

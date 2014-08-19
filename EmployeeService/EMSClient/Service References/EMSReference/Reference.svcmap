@@ -22,13 +22,11 @@
     <MetadataSource Address="http://localhost:62293/EmployeeManagementService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="EmployeeManagementService.xsd" MetadataType="Schema" ID="b2d3cce6-56f6-4875-9caa-083edc0d50bc" SourceId="1" SourceUrl="http://localhost:62293/EmployeeManagementService.svc?xsd=xsd4" />
-    <MetadataFile FileName="EmployeeManagementService.disco" MetadataType="Disco" ID="064579a9-60a2-4db2-8a29-d607f21fc4db" SourceId="1" SourceUrl="http://localhost:62293/EmployeeManagementService.svc?disco" />
+    <MetadataFile FileName="EmployeeManagementService4.xsd" MetadataType="Schema" ID="758105f6-fc72-4986-9145-6a454a8aa2e7" SourceId="1" SourceUrl="http://localhost:62293/EmployeeManagementService.svc?xsd=xsd2" />
     <MetadataFile FileName="EmployeeManagementService.wsdl" MetadataType="Wsdl" ID="617e70f0-96ea-4882-a0a5-85d9d7e6a725" SourceId="1" SourceUrl="http://localhost:62293/EmployeeManagementService.svc?wsdl" />
     <MetadataFile FileName="EmployeeManagementService1.xsd" MetadataType="Schema" ID="a92523a0-5a91-4a08-95db-2b14407dc112" SourceId="1" SourceUrl="http://localhost:62293/EmployeeManagementService.svc?xsd=xsd1" />
     <MetadataFile FileName="EmployeeManagementService2.xsd" MetadataType="Schema" ID="89ba0f03-ca3f-4a45-887a-a96e598bcb2c" SourceId="1" SourceUrl="http://localhost:62293/EmployeeManagementService.svc?xsd=xsd0" />
-    <MetadataFile FileName="EmployeeManagementService3.xsd" MetadataType="Schema" ID="3553ca75-85a6-4ee4-a0e1-36d05adc7585" SourceId="1" SourceUrl="http://localhost:62293/EmployeeManagementService.svc?xsd=xsd3" />
-    <MetadataFile FileName="EmployeeManagementService4.xsd" MetadataType="Schema" ID="758105f6-fc72-4986-9145-6a454a8aa2e7" SourceId="1" SourceUrl="http://localhost:62293/EmployeeManagementService.svc?xsd=xsd2" />
+    <MetadataFile FileName="EmployeeManagementService.disco" MetadataType="Disco" ID="064579a9-60a2-4db2-8a29-d607f21fc4db" SourceId="1" SourceUrl="http://localhost:62293/EmployeeManagementService.svc?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
