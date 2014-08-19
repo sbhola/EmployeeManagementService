@@ -285,12 +285,21 @@ namespace EmployeeFixtures.EmployeeServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICreateOrModifyEmployee/CreateEmployee", ReplyAction="http://tempuri.org/ICreateOrModifyEmployee/CreateEmployeeResponse")]
         System.Threading.Tasks.Task<EmployeeFixtures.EmployeeServiceReference.Employee> CreateEmployeeAsync(string name, string remarks);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICreateOrModifyEmployee/AddRemarks", ReplyAction="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(EmployeeFixtures.EmployeeServiceReference.EmployeeDoesNotExists), Action="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksEmployeeDoesNotExistsFault", Name="EmployeeDoesNotExists", Namespace="http://schemas.datacontract.org/2004/07/EmployeeService")]
-        void AddRemarks(int id, string remarks);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksById", ReplyAction="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksByIdResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmployeeFixtures.EmployeeServiceReference.EmployeeDoesNotExists), Action="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksByIdEmployeeDoesNotExistsFau" +
+            "lt", Name="EmployeeDoesNotExists", Namespace="http://schemas.datacontract.org/2004/07/EmployeeService")]
+        void AddRemarksById(int id, string remarks);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICreateOrModifyEmployee/AddRemarks", ReplyAction="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksResponse")]
-        System.Threading.Tasks.Task AddRemarksAsync(int id, string remarks);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksById", ReplyAction="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksByIdResponse")]
+        System.Threading.Tasks.Task AddRemarksByIdAsync(int id, string remarks);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksByName", ReplyAction="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksByNameResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmployeeFixtures.EmployeeServiceReference.EmployeeDoesNotExists), Action="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksByNameEmployeeDoesNotExistsF" +
+            "ault", Name="EmployeeDoesNotExists", Namespace="http://schemas.datacontract.org/2004/07/EmployeeService")]
+        void AddRemarksByName(string name, string remarks);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksByName", ReplyAction="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksByNameResponse")]
+        System.Threading.Tasks.Task AddRemarksByNameAsync(string name, string remarks);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICreateOrModifyEmployee/DeleteEmployeeById", ReplyAction="http://tempuri.org/ICreateOrModifyEmployee/DeleteEmployeeByIdResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmployeeFixtures.EmployeeServiceReference.EmployeeDoesNotExists), Action="http://tempuri.org/ICreateOrModifyEmployee/DeleteEmployeeByIdEmployeeDoesNotExist" +
@@ -299,6 +308,14 @@ namespace EmployeeFixtures.EmployeeServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICreateOrModifyEmployee/DeleteEmployeeById", ReplyAction="http://tempuri.org/ICreateOrModifyEmployee/DeleteEmployeeByIdResponse")]
         System.Threading.Tasks.Task DeleteEmployeeByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICreateOrModifyEmployee/DeleteEmployeeByName", ReplyAction="http://tempuri.org/ICreateOrModifyEmployee/DeleteEmployeeByNameResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmployeeFixtures.EmployeeServiceReference.EmployeeDoesNotExists), Action="http://tempuri.org/ICreateOrModifyEmployee/DeleteEmployeeByNameEmployeeDoesNotExi" +
+            "stsFault", Name="EmployeeDoesNotExists", Namespace="http://schemas.datacontract.org/2004/07/EmployeeService")]
+        void DeleteEmployeeByName(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICreateOrModifyEmployee/DeleteEmployeeByName", ReplyAction="http://tempuri.org/ICreateOrModifyEmployee/DeleteEmployeeByNameResponse")]
+        System.Threading.Tasks.Task DeleteEmployeeByNameAsync(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICreateOrModifyEmployee/DisposeEmployeeList", ReplyAction="http://tempuri.org/ICreateOrModifyEmployee/DisposeEmployeeListResponse")]
         void DisposeEmployeeList();
@@ -342,12 +359,20 @@ namespace EmployeeFixtures.EmployeeServiceReference {
             return base.Channel.CreateEmployeeAsync(name, remarks);
         }
         
-        public void AddRemarks(int id, string remarks) {
-            base.Channel.AddRemarks(id, remarks);
+        public void AddRemarksById(int id, string remarks) {
+            base.Channel.AddRemarksById(id, remarks);
         }
         
-        public System.Threading.Tasks.Task AddRemarksAsync(int id, string remarks) {
-            return base.Channel.AddRemarksAsync(id, remarks);
+        public System.Threading.Tasks.Task AddRemarksByIdAsync(int id, string remarks) {
+            return base.Channel.AddRemarksByIdAsync(id, remarks);
+        }
+        
+        public void AddRemarksByName(string name, string remarks) {
+            base.Channel.AddRemarksByName(name, remarks);
+        }
+        
+        public System.Threading.Tasks.Task AddRemarksByNameAsync(string name, string remarks) {
+            return base.Channel.AddRemarksByNameAsync(name, remarks);
         }
         
         public void DeleteEmployeeById(int id) {
@@ -356,6 +381,14 @@ namespace EmployeeFixtures.EmployeeServiceReference {
         
         public System.Threading.Tasks.Task DeleteEmployeeByIdAsync(int id) {
             return base.Channel.DeleteEmployeeByIdAsync(id);
+        }
+        
+        public void DeleteEmployeeByName(string name) {
+            base.Channel.DeleteEmployeeByName(name);
+        }
+        
+        public System.Threading.Tasks.Task DeleteEmployeeByNameAsync(string name) {
+            return base.Channel.DeleteEmployeeByNameAsync(name);
         }
         
         public void DisposeEmployeeList() {
@@ -372,19 +405,12 @@ namespace EmployeeFixtures.EmployeeServiceReference {
     public interface IRetrieveEmpDetails {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsById", ReplyAction="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByIdResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByIdFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmployeeFixtures.EmployeeServiceReference.EmployeeDoesNotExists), Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByIdEmployeeDoesNotExist" +
+            "sFault", Name="EmployeeDoesNotExists", Namespace="http://schemas.datacontract.org/2004/07/EmployeeService")]
         EmployeeFixtures.EmployeeServiceReference.Employee GetEmployeeDetailsById(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsById", ReplyAction="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByIdResponse")]
         System.Threading.Tasks.Task<EmployeeFixtures.EmployeeServiceReference.Employee> GetEmployeeDetailsByIdAsync(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeList", ReplyAction="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeListResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(EmployeeFixtures.EmployeeServiceReference.EmployeeDoesNotExists), Action="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeListEmployeeDoesNotExistsFau" +
-            "lt", Name="EmployeeDoesNotExists", Namespace="http://schemas.datacontract.org/2004/07/EmployeeService")]
-        EmployeeFixtures.EmployeeServiceReference.Employee[] GetAllEmployeeList();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeList", ReplyAction="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeListResponse")]
-        System.Threading.Tasks.Task<EmployeeFixtures.EmployeeServiceReference.Employee[]> GetAllEmployeeListAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByName", ReplyAction="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByNameResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(EmployeeFixtures.EmployeeServiceReference.EmployeeDoesNotExists), Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByNameEmployeeDoesNotExi" +
@@ -393,6 +419,14 @@ namespace EmployeeFixtures.EmployeeServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByName", ReplyAction="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByNameResponse")]
         System.Threading.Tasks.Task<EmployeeFixtures.EmployeeServiceReference.Employee> GetEmployeeDetailsByNameAsync(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeList", ReplyAction="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeListResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(EmployeeFixtures.EmployeeServiceReference.EmployeeDoesNotExists), Action="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeListEmployeeDoesNotExistsFau" +
+            "lt", Name="EmployeeDoesNotExists", Namespace="http://schemas.datacontract.org/2004/07/EmployeeService")]
+        EmployeeFixtures.EmployeeServiceReference.Employee[] GetAllEmployeeList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeList", ReplyAction="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeListResponse")]
+        System.Threading.Tasks.Task<EmployeeFixtures.EmployeeServiceReference.Employee[]> GetAllEmployeeListAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -430,20 +464,20 @@ namespace EmployeeFixtures.EmployeeServiceReference {
             return base.Channel.GetEmployeeDetailsByIdAsync(id);
         }
         
-        public EmployeeFixtures.EmployeeServiceReference.Employee[] GetAllEmployeeList() {
-            return base.Channel.GetAllEmployeeList();
-        }
-        
-        public System.Threading.Tasks.Task<EmployeeFixtures.EmployeeServiceReference.Employee[]> GetAllEmployeeListAsync() {
-            return base.Channel.GetAllEmployeeListAsync();
-        }
-        
         public EmployeeFixtures.EmployeeServiceReference.Employee GetEmployeeDetailsByName(string name) {
             return base.Channel.GetEmployeeDetailsByName(name);
         }
         
         public System.Threading.Tasks.Task<EmployeeFixtures.EmployeeServiceReference.Employee> GetEmployeeDetailsByNameAsync(string name) {
             return base.Channel.GetEmployeeDetailsByNameAsync(name);
+        }
+        
+        public EmployeeFixtures.EmployeeServiceReference.Employee[] GetAllEmployeeList() {
+            return base.Channel.GetAllEmployeeList();
+        }
+        
+        public System.Threading.Tasks.Task<EmployeeFixtures.EmployeeServiceReference.Employee[]> GetAllEmployeeListAsync() {
+            return base.Channel.GetAllEmployeeListAsync();
         }
     }
 }

@@ -74,12 +74,58 @@ namespace EmployeeService
             }
         }
 
-        public void DeleteEmployeeById(int id)
+        /// <summary>
+        /// Adds remarks for an employee for a given employee Name.
+        /// If remark successfully added for existing employee,Writes to the output(debug).
+        /// Throws faultException if employee id is not present int the _employee list.
+        /// </summary>
+        /// <param name="name">string</param>
+        /// <param name="remarks">string</param>
+        /// <returns>void</returns>
+        public void AddRemarks(string name, string remarks)
+        {
+
+            if (_employees.Any(emp => emp.EmpName == name))
+            {
+                int index = _employees.IndexOf(_employees.First(emp => emp.EmpName == name));
+                _employees[index].Remark.Text = remarks;
+            }
+            else
+            {
+                var fault = new EmployeeDoesNotExists
+                {
+                    FaultId = 102,
+                    Message = "Employee Does not exits"
+                };
+                throw new FaultException<EmployeeDoesNotExists>(fault, "Employee Does not exists.");
+            }
+        }
+
+        public void DeleteEmployee(int id)
         {
             if (_employees.Any(emp => emp.EmpId == id))
             {
                 int index = _employees.IndexOf(_employees.First(emp => emp.EmpId == id));
                 _employees.Remove(_employees.First(emp => emp.EmpId == id));
+                Debug.WriteLine("Employee removed");
+            }
+            else
+            {
+                var fault = new EmployeeDoesNotExists
+                {
+                    FaultId = 104,
+                    Message = "Employee id you want to delete does not exists.Please try again."
+                };
+                throw new FaultException<EmployeeDoesNotExists>(fault, "Employee id you want to delete does not exists");
+            }
+        }
+
+        public void DeleteEmployee(string name)
+        {
+            if (_employees.Any(emp => emp.EmpName == name))
+            {
+                int index = _employees.IndexOf(_employees.First(emp => emp.EmpName == name));
+                _employees.Remove(_employees.First(emp => emp.EmpName == name));
                 Debug.WriteLine("Employee removed");
             }
             else
@@ -99,14 +145,22 @@ namespace EmployeeService
         /// </summary>
         /// <param name="id">int</param>
         /// <returns>Employee</returns>
-        public Employee GetEmployeeDetailsById(int id)
+        public Employee GetEmployeeDetails(int id)
         {
             if (_employees.Any(emp => emp.EmpId == id))
             {
                 Employee selectedEmployee = _employees.Where(emp => emp.EmpId == id).First();
                 return selectedEmployee;
             }
-            throw FaultException.CreateFault(MessageFault.CreateFault(new FaultCode("103"), "Employee id requested is not present"));
+            else
+            {
+                var fault = new EmployeeDoesNotExists
+                {
+                    FaultId = 113,
+                    Message = "Employee Name you searched does not Exist.Please try again"
+                };
+                throw new FaultException<EmployeeDoesNotExists>(fault, "Employee Id you searched does not Exist");
+            }
         }
 
         /// <summary>
@@ -133,7 +187,7 @@ namespace EmployeeService
         /// </summary>
         /// <param name="name">string</param>
         /// <returns>Employee</returns>
-        public Employee GetEmployeeDetailsByName(string name)
+        public Employee GetEmployeeDetails(string name)
         {
             if (_employees.Any(emp => emp.EmpName == name))
             {

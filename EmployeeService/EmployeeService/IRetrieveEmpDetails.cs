@@ -6,17 +6,22 @@ namespace EmployeeService
     [ServiceContract]   
     public interface IRetrieveEmpDetails
     {
-        [OperationContract]
-        [FaultContract(typeof(FaultException))]
-        Employee GetEmployeeDetailsById(int id);
+        [OperationContract(Name = "GetEmployeeDetailsById")]
+        [FaultContract(typeof(EmployeeDoesNotExists))]
+        Employee GetEmployeeDetails(int id);
+
+        [OperationContract(Name = "GetEmployeeDetailsByName")]
+        [FaultContract(typeof(EmployeeDoesNotExists))]
+        Employee GetEmployeeDetails(string name);
+
 
         [OperationContract]
         [FaultContract(typeof(EmployeeDoesNotExists))]
         List<Employee> GetAllEmployeeList();
 
-        [OperationContract]
-        [FaultContract(typeof(EmployeeDoesNotExists))]
-        Employee GetEmployeeDetailsByName(string name);
+        //[OperationContract]
+        //[FaultContract(typeof(EmployeeDoesNotExists))]
+        //Employee GetEmployeeDetailsByName(string name);
     }
 
 }

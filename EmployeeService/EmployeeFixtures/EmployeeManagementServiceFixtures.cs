@@ -43,27 +43,46 @@ namespace EmployeeFixtures
             using (var client = new CreateOrModifyEmployeeClient())
             {
                 Employee newEmployee = client.CreateEmployee("sid", "good boy");
-                Assert.AreEqual(newEmployee.EmpId, 1);
                 Assert.AreEqual(newEmployee.EmpName, "sid");
                 Assert.AreEqual(newEmployee.Remark.Text, "good boy");
             }
         }
 
         /// <summary>
-        /// Test for : Modifying remark for an existing employee 
+        /// Test for : Modifying remark for an existing employee by Id.
         /// </summary>
         [TestMethod]
-        public void TestAddRemarkForExistingEmployee()
+        public void TestAddRemarkByIdForExistingEmployee()
         {
             using (var client = new CreateOrModifyEmployeeClient())
             {
                 Employee newEmployee = client.CreateEmployee("sid", "good boy");
-                client.AddRemarks(1, "sad boy");
+                client.AddRemarksById(1, "sad boy");
 
                 using (var retrieveClient = new RetrieveEmpDetailsClient())
                 {
                     var empModified = retrieveClient.GetEmployeeDetailsById(1);
                     Assert.AreEqual(empModified.Remark.Text, "sad boy");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Test for : Modifying remark for an existing employee by Name
+        /// </summary>
+        [TestMethod]
+        public void TestAddRemarkByNameForExistingEmployee()
+        {
+            using (var client = new CreateOrModifyEmployeeClient())
+            {
+                Employee newEmployee = client.CreateEmployee("sid", "good boy");
+                newEmployee = client.CreateEmployee("hitesh", "ma bitch");
+                client.AddRemarksByName("hitesh", "yoyo boy");
+
+                using (var retrieveClient = new RetrieveEmpDetailsClient())
+                {
+                    var empModified = retrieveClient.GetEmployeeDetailsById(2);
+                    Assert.AreEqual(empModified.Remark.Text, "yoyo boy");
                 }
             }
         }
@@ -79,7 +98,7 @@ namespace EmployeeFixtures
             using (var client = new CreateOrModifyEmployeeClient())
             {
                 client.CreateEmployee( "sid", "yoyo");
-                client.AddRemarks(6, "watta boy");
+                client.AddRemarksById(6, "watta boy");
                 using (var retrieveClient = new RetrieveEmpDetailsClient())
                 {
                     var empTried = retrieveClient.GetEmployeeDetailsById(6);
@@ -191,7 +210,7 @@ namespace EmployeeFixtures
         }
 
         [TestMethod]
-        public void TestDeleteExistingEmployee()
+        public void TestDeleteExistingEmployeeById()
         {
             using (var createClient = new CreateOrModifyEmployeeClient())
             {
@@ -206,6 +225,32 @@ namespace EmployeeFixtures
                 }
 
                 createClient.DeleteEmployeeById(1);
+
+                using (var retrieveClient = new RetrieveEmpDetailsClient())
+                {
+                    var empList = retrieveClient.GetAllEmployeeList();
+                    Assert.AreEqual(empList.Length, 2);
+                }
+            }
+        }
+
+
+        [TestMethod]
+        public void TestDeleteExistingEmployeeByName()
+        {
+            using (var createClient = new CreateOrModifyEmployeeClient())
+            {
+                createClient.CreateEmployee("sid", "watta boy");
+                createClient.CreateEmployee("vinayak", "awesome boy");
+                createClient.CreateEmployee("saif", "smelly boy");
+
+                using (var retrieveClient = new RetrieveEmpDetailsClient())
+                {
+                    var empList = retrieveClient.GetAllEmployeeList();
+                    Assert.AreEqual(empList.Length, 3);
+                }
+
+                createClient.DeleteEmployeeByName("saif");
 
                 using (var retrieveClient = new RetrieveEmpDetailsClient())
                 {

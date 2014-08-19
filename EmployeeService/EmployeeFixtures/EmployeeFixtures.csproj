@@ -71,16 +71,10 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\EmployeeServiceReference\EmployeeManagementService.wsdl" />
-    <None Include="Service References\EmployeeServiceReference\EmployeeManagementService.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\EmployeeServiceReference\EmployeeManagementService1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\EmployeeServiceReference\EmployeeManagementService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EmployeeServiceReference\EmployeeManagementService3.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\EmployeeServiceReference\EmployeeManagementService4.xsd">

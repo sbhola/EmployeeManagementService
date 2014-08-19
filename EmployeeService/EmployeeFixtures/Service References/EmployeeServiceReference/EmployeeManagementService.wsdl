@@ -153,7 +153,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_ICreateOrModifyEmployee_AddRemarks_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_ICreateOrModifyEmployee_AddRemarksById_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -172,7 +172,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_ICreateOrModifyEmployee_AddRemarks_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_ICreateOrModifyEmployee_AddRemarksById_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -191,7 +191,64 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_ICreateOrModifyEmployee_AddRemarks_EmployeeDoesNotExistsFault_Fault">
+  <wsp:Policy wsu:Id="WSHttpBinding_ICreateOrModifyEmployee_AddRemarksById_EmployeeDoesNotExistsFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ICreateOrModifyEmployee_AddRemarksByName_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ICreateOrModifyEmployee_AddRemarksByName_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ICreateOrModifyEmployee_AddRemarksByName_EmployeeDoesNotExistsFault_Fault">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -249,6 +306,63 @@
     </wsp:ExactlyOne>
   </wsp:Policy>
   <wsp:Policy wsu:Id="WSHttpBinding_ICreateOrModifyEmployee_DeleteEmployeeById_EmployeeDoesNotExistsFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ICreateOrModifyEmployee_DeleteEmployeeByName_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ICreateOrModifyEmployee_DeleteEmployeeByName_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ICreateOrModifyEmployee_DeleteEmployeeByName_EmployeeDoesNotExistsFault_Fault">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -439,64 +553,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IRetrieveEmpDetails_GetEmployeeDetailsById_FaultExceptionFault_Fault">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IRetrieveEmpDetails_GetAllEmployeeList_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IRetrieveEmpDetails_GetAllEmployeeList_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IRetrieveEmpDetails_GetAllEmployeeList_EmployeeDoesNotExistsFault_Fault">
+  <wsp:Policy wsu:Id="WSHttpBinding_IRetrieveEmpDetails_GetEmployeeDetailsById_EmployeeDoesNotExistsFault_Fault">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -572,13 +629,68 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRetrieveEmpDetails_GetAllEmployeeList_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRetrieveEmpDetails_GetAllEmployeeList_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRetrieveEmpDetails_GetAllEmployeeList_EmployeeDoesNotExistsFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:62293/EmployeeManagementService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:62293/EmployeeManagementService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/EmployeeService" />
       <xsd:import schemaLocation="http://localhost:62293/EmployeeManagementService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:62293/EmployeeManagementService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel" />
-      <xsd:import schemaLocation="http://localhost:62293/EmployeeManagementService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="ICreateOrModifyEmployee_CreateEmployee_InputMessage">
@@ -590,14 +702,23 @@
   <wsdl:message name="ICreateOrModifyEmployee_CreateEmployee_EmployeeAlreadyExistsFaultFault_FaultMessage">
     <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/EmployeeService" name="detail" element="q1:EmployeeAlreadyExistsFault" />
   </wsdl:message>
-  <wsdl:message name="ICreateOrModifyEmployee_AddRemarks_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddRemarks" />
+  <wsdl:message name="ICreateOrModifyEmployee_AddRemarksById_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddRemarksById" />
   </wsdl:message>
-  <wsdl:message name="ICreateOrModifyEmployee_AddRemarks_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddRemarksResponse" />
+  <wsdl:message name="ICreateOrModifyEmployee_AddRemarksById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddRemarksByIdResponse" />
   </wsdl:message>
-  <wsdl:message name="ICreateOrModifyEmployee_AddRemarks_EmployeeDoesNotExistsFault_FaultMessage">
+  <wsdl:message name="ICreateOrModifyEmployee_AddRemarksById_EmployeeDoesNotExistsFault_FaultMessage">
     <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/EmployeeService" name="detail" element="q2:EmployeeDoesNotExists" />
+  </wsdl:message>
+  <wsdl:message name="ICreateOrModifyEmployee_AddRemarksByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddRemarksByName" />
+  </wsdl:message>
+  <wsdl:message name="ICreateOrModifyEmployee_AddRemarksByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddRemarksByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICreateOrModifyEmployee_AddRemarksByName_EmployeeDoesNotExistsFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/EmployeeService" name="detail" element="q3:EmployeeDoesNotExists" />
   </wsdl:message>
   <wsdl:message name="ICreateOrModifyEmployee_DeleteEmployeeById_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteEmployeeById" />
@@ -606,7 +727,16 @@
     <wsdl:part name="parameters" element="tns:DeleteEmployeeByIdResponse" />
   </wsdl:message>
   <wsdl:message name="ICreateOrModifyEmployee_DeleteEmployeeById_EmployeeDoesNotExistsFault_FaultMessage">
-    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/EmployeeService" name="detail" element="q3:EmployeeDoesNotExists" />
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/EmployeeService" name="detail" element="q4:EmployeeDoesNotExists" />
+  </wsdl:message>
+  <wsdl:message name="ICreateOrModifyEmployee_DeleteEmployeeByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEmployeeByName" />
+  </wsdl:message>
+  <wsdl:message name="ICreateOrModifyEmployee_DeleteEmployeeByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEmployeeByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICreateOrModifyEmployee_DeleteEmployeeByName_EmployeeDoesNotExistsFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/EmployeeService" name="detail" element="q5:EmployeeDoesNotExists" />
   </wsdl:message>
   <wsdl:message name="ICreateOrModifyEmployee_DisposeEmployeeList_InputMessage">
     <wsdl:part name="parameters" element="tns:DisposeEmployeeList" />
@@ -620,17 +750,8 @@
   <wsdl:message name="IRetrieveEmpDetails_GetEmployeeDetailsById_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetEmployeeDetailsByIdResponse" />
   </wsdl:message>
-  <wsdl:message name="IRetrieveEmpDetails_GetEmployeeDetailsById_FaultExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q4:FaultException" />
-  </wsdl:message>
-  <wsdl:message name="IRetrieveEmpDetails_GetAllEmployeeList_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllEmployeeList" />
-  </wsdl:message>
-  <wsdl:message name="IRetrieveEmpDetails_GetAllEmployeeList_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllEmployeeListResponse" />
-  </wsdl:message>
-  <wsdl:message name="IRetrieveEmpDetails_GetAllEmployeeList_EmployeeDoesNotExistsFault_FaultMessage">
-    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/EmployeeService" name="detail" element="q5:EmployeeDoesNotExists" />
+  <wsdl:message name="IRetrieveEmpDetails_GetEmployeeDetailsById_EmployeeDoesNotExistsFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/EmployeeService" name="detail" element="q6:EmployeeDoesNotExists" />
   </wsdl:message>
   <wsdl:message name="IRetrieveEmpDetails_GetEmployeeDetailsByName_InputMessage">
     <wsdl:part name="parameters" element="tns:GetEmployeeDetailsByName" />
@@ -639,7 +760,16 @@
     <wsdl:part name="parameters" element="tns:GetEmployeeDetailsByNameResponse" />
   </wsdl:message>
   <wsdl:message name="IRetrieveEmpDetails_GetEmployeeDetailsByName_EmployeeDoesNotExistsFault_FaultMessage">
-    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/EmployeeService" name="detail" element="q6:EmployeeDoesNotExists" />
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/EmployeeService" name="detail" element="q7:EmployeeDoesNotExists" />
+  </wsdl:message>
+  <wsdl:message name="IRetrieveEmpDetails_GetAllEmployeeList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllEmployeeList" />
+  </wsdl:message>
+  <wsdl:message name="IRetrieveEmpDetails_GetAllEmployeeList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllEmployeeListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRetrieveEmpDetails_GetAllEmployeeList_EmployeeDoesNotExistsFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/EmployeeService" name="detail" element="q8:EmployeeDoesNotExists" />
   </wsdl:message>
   <wsdl:portType name="ICreateOrModifyEmployee">
     <wsdl:operation name="CreateEmployee">
@@ -647,15 +777,25 @@
       <wsdl:output wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/CreateEmployeeResponse" message="tns:ICreateOrModifyEmployee_CreateEmployee_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/CreateEmployeeEmployeeAlreadyExistsFaultFault" name="EmployeeAlreadyExistsFaultFault" message="tns:ICreateOrModifyEmployee_CreateEmployee_EmployeeAlreadyExistsFaultFault_FaultMessage" />
     </wsdl:operation>
-    <wsdl:operation name="AddRemarks">
-      <wsdl:input wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/AddRemarks" message="tns:ICreateOrModifyEmployee_AddRemarks_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksResponse" message="tns:ICreateOrModifyEmployee_AddRemarks_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksEmployeeDoesNotExistsFault" name="EmployeeDoesNotExistsFault" message="tns:ICreateOrModifyEmployee_AddRemarks_EmployeeDoesNotExistsFault_FaultMessage" />
+    <wsdl:operation name="AddRemarksById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksById" message="tns:ICreateOrModifyEmployee_AddRemarksById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksByIdResponse" message="tns:ICreateOrModifyEmployee_AddRemarksById_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksByIdEmployeeDoesNotExistsFault" name="EmployeeDoesNotExistsFault" message="tns:ICreateOrModifyEmployee_AddRemarksById_EmployeeDoesNotExistsFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRemarksByName">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksByName" message="tns:ICreateOrModifyEmployee_AddRemarksByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksByNameResponse" message="tns:ICreateOrModifyEmployee_AddRemarksByName_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksByNameEmployeeDoesNotExistsFault" name="EmployeeDoesNotExistsFault" message="tns:ICreateOrModifyEmployee_AddRemarksByName_EmployeeDoesNotExistsFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteEmployeeById">
       <wsdl:input wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/DeleteEmployeeById" message="tns:ICreateOrModifyEmployee_DeleteEmployeeById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/DeleteEmployeeByIdResponse" message="tns:ICreateOrModifyEmployee_DeleteEmployeeById_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/DeleteEmployeeByIdEmployeeDoesNotExistsFault" name="EmployeeDoesNotExistsFault" message="tns:ICreateOrModifyEmployee_DeleteEmployeeById_EmployeeDoesNotExistsFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEmployeeByName">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/DeleteEmployeeByName" message="tns:ICreateOrModifyEmployee_DeleteEmployeeByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/DeleteEmployeeByNameResponse" message="tns:ICreateOrModifyEmployee_DeleteEmployeeByName_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/DeleteEmployeeByNameEmployeeDoesNotExistsFault" name="EmployeeDoesNotExistsFault" message="tns:ICreateOrModifyEmployee_DeleteEmployeeByName_EmployeeDoesNotExistsFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="DisposeEmployeeList">
       <wsdl:input wsaw:Action="http://tempuri.org/ICreateOrModifyEmployee/DisposeEmployeeList" message="tns:ICreateOrModifyEmployee_DisposeEmployeeList_InputMessage" />
@@ -666,17 +806,17 @@
     <wsdl:operation name="GetEmployeeDetailsById">
       <wsdl:input wsaw:Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsById" message="tns:IRetrieveEmpDetails_GetEmployeeDetailsById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByIdResponse" message="tns:IRetrieveEmpDetails_GetEmployeeDetailsById_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByIdFaultExceptionFault" name="FaultExceptionFault" message="tns:IRetrieveEmpDetails_GetEmployeeDetailsById_FaultExceptionFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetAllEmployeeList">
-      <wsdl:input wsaw:Action="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeList" message="tns:IRetrieveEmpDetails_GetAllEmployeeList_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeListResponse" message="tns:IRetrieveEmpDetails_GetAllEmployeeList_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeListEmployeeDoesNotExistsFault" name="EmployeeDoesNotExistsFault" message="tns:IRetrieveEmpDetails_GetAllEmployeeList_EmployeeDoesNotExistsFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByIdEmployeeDoesNotExistsFault" name="EmployeeDoesNotExistsFault" message="tns:IRetrieveEmpDetails_GetEmployeeDetailsById_EmployeeDoesNotExistsFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetEmployeeDetailsByName">
       <wsdl:input wsaw:Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByName" message="tns:IRetrieveEmpDetails_GetEmployeeDetailsByName_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByNameResponse" message="tns:IRetrieveEmpDetails_GetEmployeeDetailsByName_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IRetrieveEmpDetails/GetEmployeeDetailsByNameEmployeeDoesNotExistsFault" name="EmployeeDoesNotExistsFault" message="tns:IRetrieveEmpDetails_GetEmployeeDetailsByName_EmployeeDoesNotExistsFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEmployeeList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeList" message="tns:IRetrieveEmpDetails_GetAllEmployeeList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeListResponse" message="tns:IRetrieveEmpDetails_GetAllEmployeeList_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeListEmployeeDoesNotExistsFault" name="EmployeeDoesNotExistsFault" message="tns:IRetrieveEmpDetails_GetAllEmployeeList_EmployeeDoesNotExistsFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_ICreateOrModifyEmployee" type="tns:ICreateOrModifyEmployee">
@@ -697,18 +837,33 @@
         <soap12:fault use="literal" name="EmployeeAlreadyExistsFaultFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
-    <wsdl:operation name="AddRemarks">
-      <soap12:operation soapAction="http://tempuri.org/ICreateOrModifyEmployee/AddRemarks" style="document" />
+    <wsdl:operation name="AddRemarksById">
+      <soap12:operation soapAction="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksById" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_ICreateOrModifyEmployee_AddRemarks_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_ICreateOrModifyEmployee_AddRemarksById_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_ICreateOrModifyEmployee_AddRemarks_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_ICreateOrModifyEmployee_AddRemarksById_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
       <wsdl:fault name="EmployeeDoesNotExistsFault">
-        <wsp:PolicyReference URI="#WSHttpBinding_ICreateOrModifyEmployee_AddRemarks_EmployeeDoesNotExistsFault_Fault" />
+        <wsp:PolicyReference URI="#WSHttpBinding_ICreateOrModifyEmployee_AddRemarksById_EmployeeDoesNotExistsFault_Fault" />
+        <soap12:fault use="literal" name="EmployeeDoesNotExistsFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddRemarksByName">
+      <soap12:operation soapAction="http://tempuri.org/ICreateOrModifyEmployee/AddRemarksByName" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_ICreateOrModifyEmployee_AddRemarksByName_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_ICreateOrModifyEmployee_AddRemarksByName_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EmployeeDoesNotExistsFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_ICreateOrModifyEmployee_AddRemarksByName_EmployeeDoesNotExistsFault_Fault" />
         <soap12:fault use="literal" name="EmployeeDoesNotExistsFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
@@ -724,6 +879,21 @@
       </wsdl:output>
       <wsdl:fault name="EmployeeDoesNotExistsFault">
         <wsp:PolicyReference URI="#WSHttpBinding_ICreateOrModifyEmployee_DeleteEmployeeById_EmployeeDoesNotExistsFault_Fault" />
+        <soap12:fault use="literal" name="EmployeeDoesNotExistsFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEmployeeByName">
+      <soap12:operation soapAction="http://tempuri.org/ICreateOrModifyEmployee/DeleteEmployeeByName" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_ICreateOrModifyEmployee_DeleteEmployeeByName_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_ICreateOrModifyEmployee_DeleteEmployeeByName_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EmployeeDoesNotExistsFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_ICreateOrModifyEmployee_DeleteEmployeeByName_EmployeeDoesNotExistsFault_Fault" />
         <soap12:fault use="literal" name="EmployeeDoesNotExistsFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
@@ -752,23 +922,8 @@
         <wsp:PolicyReference URI="#WSHttpBinding_IRetrieveEmpDetails_GetEmployeeDetailsById_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
-      <wsdl:fault name="FaultExceptionFault">
-        <wsp:PolicyReference URI="#WSHttpBinding_IRetrieveEmpDetails_GetEmployeeDetailsById_FaultExceptionFault_Fault" />
-        <soap12:fault use="literal" name="FaultExceptionFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="GetAllEmployeeList">
-      <soap12:operation soapAction="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeList" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IRetrieveEmpDetails_GetAllEmployeeList_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IRetrieveEmpDetails_GetAllEmployeeList_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
       <wsdl:fault name="EmployeeDoesNotExistsFault">
-        <wsp:PolicyReference URI="#WSHttpBinding_IRetrieveEmpDetails_GetAllEmployeeList_EmployeeDoesNotExistsFault_Fault" />
+        <wsp:PolicyReference URI="#WSHttpBinding_IRetrieveEmpDetails_GetEmployeeDetailsById_EmployeeDoesNotExistsFault_Fault" />
         <soap12:fault use="literal" name="EmployeeDoesNotExistsFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
@@ -784,6 +939,21 @@
       </wsdl:output>
       <wsdl:fault name="EmployeeDoesNotExistsFault">
         <wsp:PolicyReference URI="#WSHttpBinding_IRetrieveEmpDetails_GetEmployeeDetailsByName_EmployeeDoesNotExistsFault_Fault" />
+        <soap12:fault use="literal" name="EmployeeDoesNotExistsFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEmployeeList">
+      <soap12:operation soapAction="http://tempuri.org/IRetrieveEmpDetails/GetAllEmployeeList" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRetrieveEmpDetails_GetAllEmployeeList_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRetrieveEmpDetails_GetAllEmployeeList_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EmployeeDoesNotExistsFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRetrieveEmpDetails_GetAllEmployeeList_EmployeeDoesNotExistsFault_Fault" />
         <soap12:fault use="literal" name="EmployeeDoesNotExistsFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
