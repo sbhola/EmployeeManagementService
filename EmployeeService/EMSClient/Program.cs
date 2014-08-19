@@ -7,7 +7,7 @@ namespace EMSClient
         static void Main(string[] args)
         {
             int choice = 1;
-            EmployeeClient emp = new EmployeeClient();
+            var emp = new EmployeeClient();
             while (choice != 9)
             {
                 Console.WriteLine("Press any key to continue..");

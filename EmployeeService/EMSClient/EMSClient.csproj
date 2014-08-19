@@ -55,23 +55,23 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Service References\EMSReference\EmployeeManagementService.wsdl" />
+    <None Include="Service References\EMSReference\EmployeeManagementService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EMSReference\EmployeeManagementService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EMSReference\EmployeeManagementService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EMSReference\EmployeeManagementService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EMSReference\EmployeeManagementService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\EMSReference\EMSClient.EMSReference.Employee.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\EMSReference\Service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EMSReference\Service11.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EMSReference\Service12.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EMSReference\Service13.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EMSReference\Service131.xsd">
-      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -81,7 +81,7 @@
     <WCFMetadataStorage Include="Service References\EMSReference\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\EMSReference\Service1.disco" />
+    <None Include="Service References\EMSReference\EmployeeManagementService.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\EMSReference\configuration91.svcinfo" />

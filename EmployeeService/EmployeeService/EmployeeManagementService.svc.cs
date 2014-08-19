@@ -20,7 +20,6 @@ namespace EmployeeService
         /// Creates a new employee with given id,name and remarks.
         /// if successful, adds the new employee in the _employee list.
         /// </summary>
-        /// <param name="id">int</param>
         /// <param name="name">string</param>
         /// <param name="remarks">string</param>
         /// <returns>Employee</returns>
@@ -31,9 +30,7 @@ namespace EmployeeService
             //Check if the employee id is already present in the list,is yes then throw.
             if (_employees.Any(emp1 => emp1.EmpId == _idGenerator))
             {
-                DisposeEmployeeList();
-
-                EmployeeAlreadyExistsFault fault = new EmployeeAlreadyExistsFault
+                var fault = new EmployeeAlreadyExistsFault
                 {
                     FaultId = 101,
                     Message = "Employee Already Exists.Please try again"
@@ -43,16 +40,9 @@ namespace EmployeeService
             }
 
             //Else create a new employee and add it in the list
-            Employee emp = new Employee();
-            emp.EmpId = _idGenerator;
-            emp.EmpName = name;
-
-            Remarks remark = new Remarks();
-            remark.Text = remarks;
-            remark.RemarkTimestamp = DateTime.Now;
-
+            var emp = new Employee {EmpId = _idGenerator, EmpName = name};
+            var remark = new Remarks {Text = remarks, RemarkTimestamp = DateTime.Now};
             emp.Remark = remark;
-
             _employees.Add(emp);
 
             return emp;
@@ -70,18 +60,12 @@ namespace EmployeeService
         {
             if (_employees.Any(emp => emp.EmpId == id))
             {
-                //Employee selectedEmployee = Employees.Where(emp => emp.EmpID == id).First();
-                //selectedEmployee.Remark.text = remarks;
-                //Console.WriteLine("Remark changes");
-
                 int index = _employees.IndexOf(_employees.First(emp => emp.EmpId == id));
                 _employees[index].Remark.Text = remarks;
-                Debug.WriteLine("Remark changed");
             }
             else
             {
-                DisposeEmployeeList();
-                EmployeeDoesNotExists fault = new EmployeeDoesNotExists
+                var fault = new EmployeeDoesNotExists
                 {
                     FaultId = 102,
                     Message = "Employee Does not exits"
@@ -95,14 +79,12 @@ namespace EmployeeService
             if (_employees.Any(emp => emp.EmpId == id))
             {
                 int index = _employees.IndexOf(_employees.First(emp => emp.EmpId == id));
-                //_employees.RemoveAt(index);
                 _employees.Remove(_employees.First(emp => emp.EmpId == id));
                 Debug.WriteLine("Employee removed");
             }
             else
             {
-                DisposeEmployeeList();
-                EmployeeDoesNotExists fault = new EmployeeDoesNotExists
+                var fault = new EmployeeDoesNotExists
                 {
                     FaultId = 104,
                     Message = "Employee id you want to delete does not exists.Please try again."
@@ -124,8 +106,6 @@ namespace EmployeeService
                 Employee selectedEmployee = _employees.Where(emp => emp.EmpId == id).First();
                 return selectedEmployee;
             }
-            //throw new FaultException("Employee ID requested is not present.Please try again.", new FaultCode("Employee id requested is not present"));
-            DisposeEmployeeList();
             throw FaultException.CreateFault(MessageFault.CreateFault(new FaultCode("103"), "Employee id requested is not present"));
         }
 
@@ -139,7 +119,7 @@ namespace EmployeeService
             if (_employees.Count > 0)
                 return _employees;
 
-            EmployeeDoesNotExists fault = new EmployeeDoesNotExists
+            var fault = new EmployeeDoesNotExists
             {
                 FaultId = 105,
                 Message = "Employee List is Empty.Please add new employees and then try again."
@@ -157,13 +137,12 @@ namespace EmployeeService
         {
             if (_employees.Any(emp => emp.EmpName == name))
             {
-                Employee selectedEmployee = _employees.Where(emp => emp.EmpName == name).First();
+                var selectedEmployee = _employees.First(emp => emp.EmpName == name);
                 return selectedEmployee;
             }
             else
             {
-                DisposeEmployeeList();
-                EmployeeDoesNotExists fault = new EmployeeDoesNotExists
+                var fault = new EmployeeDoesNotExists
                 {
                     FaultId = 103,
                     Message = "Employee Name you searched does not Exist.Please try again"

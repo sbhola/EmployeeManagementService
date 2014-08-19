@@ -8,8 +8,6 @@ namespace EMSClient
     {
         public void AddNewEmployee()
         {
-            Console.WriteLine("Enter the Employee Id ");
-            int empId = Int32.Parse(Console.ReadLine());
             Console.WriteLine("Enter the Employee Name");
             string empName = Console.ReadLine();
             Console.WriteLine("Enter Remarks about the Employee :");
@@ -18,7 +16,7 @@ namespace EMSClient
             {
                 using (var createOrModifyClient = new CreateOrModifyEmployeeClient())
                 {
-                    createOrModifyClient.CreateEmployee(empId, empName, empRemarks);
+                    createOrModifyClient.CreateEmployee(empName, empRemarks);
                 }
             }                
             catch (FaultException ex)

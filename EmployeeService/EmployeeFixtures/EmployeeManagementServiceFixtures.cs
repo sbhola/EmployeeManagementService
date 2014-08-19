@@ -5,8 +5,6 @@ using System.ServiceModel;
 using EmployeeAlreadyExistsFault = EmployeeFixtures.EmployeeServiceReference.EmployeeAlreadyExistsFault;
 using EmployeeDoesNotExists = EmployeeFixtures.EmployeeServiceReference.EmployeeDoesNotExists;
 
-//using Employee = EmployeeFixtures.EmployeeServiceReference.Employee;
-
 /*
 Test Scenarios :
 Add and Retrieve
@@ -48,7 +46,6 @@ namespace EmployeeFixtures
                 Assert.AreEqual(newEmployee.EmpId, 1);
                 Assert.AreEqual(newEmployee.EmpName, "sid");
                 Assert.AreEqual(newEmployee.Remark.Text, "good boy");
-               // client.DisposeEmployeeList();
             }
         }
 
@@ -68,7 +65,6 @@ namespace EmployeeFixtures
                     var empModified = retrieveClient.GetEmployeeDetailsById(1);
                     Assert.AreEqual(empModified.Remark.Text, "sad boy");
                 }
-               // client.DisposeEmployeeList();
             }
         }
 
@@ -89,7 +85,6 @@ namespace EmployeeFixtures
                     var empTried = retrieveClient.GetEmployeeDetailsById(6);
                     Assert.AreNotEqual(empTried.Remark.Text, "watta boy");
                 }
-              //  client.DisposeEmployeeList();
             }
         }
 
@@ -110,7 +105,6 @@ namespace EmployeeFixtures
                     Assert.AreEqual(emp1.EmpName, emp2.EmpName);
                     Assert.AreEqual(emp1.Remark.Text, emp2.Remark.Text);
                 }
-             //   createClient.DisposeEmployeeList();
             }
         }
 
@@ -125,7 +119,6 @@ namespace EmployeeFixtures
                 var emp = client.CreateEmployee( "Rajnikant", "yenna rascala");
                 Assert.AreEqual(emp.EmpName, "Rajnikant");
                 Assert.AreEqual(emp.Remark.Text, "yenna rascala");
-             //   client.DisposeEmployeeList();
             }
         }
 
@@ -146,7 +139,6 @@ namespace EmployeeFixtures
                     var employees = client.GetAllEmployeeList();
                     Assert.AreEqual(employees.Length, 3);
                 }
-            //    createClient.DisposeEmployeeList();
             }
         }
 
@@ -173,7 +165,6 @@ namespace EmployeeFixtures
                     Assert.AreEqual(emp.EmpName, "Rajnikant");
                     Assert.AreEqual(emp.Remark.Text, "yenna rascala");
                 }
-              //  createClient.DisposeEmployeeList();
             }
         }
 
@@ -195,7 +186,6 @@ namespace EmployeeFixtures
                     string name = "maharaja";
                     var employee = client.GetEmployeeDetailsByName(name);
                 }
-            //    createClient.DisposeEmployeeList();
             }
 
         }
@@ -222,7 +212,6 @@ namespace EmployeeFixtures
                     var empList = retrieveClient.GetAllEmployeeList();
                     Assert.AreEqual(empList.Length, 2);
                 }
-            //    createClient.DisposeEmployeeList();
             }
         }
 
@@ -235,10 +224,7 @@ namespace EmployeeFixtures
                 client.CreateEmployee("sid", "watta boy");
                 client.CreateEmployee("vinayak", "shitty boy");
                 client.CreateEmployee("saif", "smelly boy");
-
                 client.DeleteEmployeeById(11);
-
-            //    client.DisposeEmployeeList();
             }
         }
     }
